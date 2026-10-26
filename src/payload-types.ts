@@ -201,7 +201,24 @@ export interface Page {
       | null;
     media?: (number | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
+  layout: (
+    | CallToActionBlock
+    | ContentBlock
+    | MediaBlock
+    | ArchiveBlock
+    | FormBlock
+    | ImageBannerBlock
+    | GridBlock
+    | ImageSliderBlock
+    | ImageScrollerBlock
+    | SpacerBlock
+    | VideoBlock
+    | QuickPickBlock
+    | ProductScrollerBlock
+    | ReorderBlock
+    | WidgetBlock
+    | TabBarBlock
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -775,6 +792,425 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageBannerBlock".
+ */
+export interface ImageBannerBlock {
+  image: {
+    imageUrl: string;
+    width?: number | null;
+    height?: number | null;
+    action?: {
+      type?: ('openPage' | 'openCollection' | 'openProduct') | null;
+      target?: string | null;
+      title?: string | null;
+    };
+    /**
+     * Who sees this section in the app
+     */
+    visibility?: {
+      audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+      tags?: string | null;
+      matchAllTags?: boolean | null;
+      excludeTags?: string | null;
+      matchAllExcludeTags?: boolean | null;
+      quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+      startsAt?: string | null;
+      endsAt?: string | null;
+    };
+    analyticsId?: string | null;
+    id?: string | null;
+  };
+  /**
+   * Who sees this section in the app
+   */
+  visibility?: {
+    audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+    tags?: string | null;
+    matchAllTags?: boolean | null;
+    excludeTags?: string | null;
+    matchAllExcludeTags?: boolean | null;
+    quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+    startsAt?: string | null;
+    endsAt?: string | null;
+  };
+  backgroundColor?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'imageBanner';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GridBlock".
+ */
+export interface GridBlock {
+  columns?: number | null;
+  gap?: boolean | null;
+  items?:
+    | {
+        imageUrl: string;
+        width?: number | null;
+        height?: number | null;
+        action?: {
+          type?: ('openPage' | 'openCollection' | 'openProduct') | null;
+          target?: string | null;
+          title?: string | null;
+        };
+        /**
+         * Who sees this section in the app
+         */
+        visibility?: {
+          audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+          tags?: string | null;
+          matchAllTags?: boolean | null;
+          excludeTags?: string | null;
+          matchAllExcludeTags?: boolean | null;
+          quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+          startsAt?: string | null;
+          endsAt?: string | null;
+        };
+        analyticsId?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Who sees this section in the app
+   */
+  visibility?: {
+    audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+    tags?: string | null;
+    matchAllTags?: boolean | null;
+    excludeTags?: string | null;
+    matchAllExcludeTags?: boolean | null;
+    quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+    startsAt?: string | null;
+    endsAt?: string | null;
+  };
+  backgroundColor?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'grid';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageSliderBlock".
+ */
+export interface ImageSliderBlock {
+  showPagination?: boolean | null;
+  items?:
+    | {
+        imageUrl: string;
+        width?: number | null;
+        height?: number | null;
+        action?: {
+          type?: ('openPage' | 'openCollection' | 'openProduct') | null;
+          target?: string | null;
+          title?: string | null;
+        };
+        /**
+         * Who sees this section in the app
+         */
+        visibility?: {
+          audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+          tags?: string | null;
+          matchAllTags?: boolean | null;
+          excludeTags?: string | null;
+          matchAllExcludeTags?: boolean | null;
+          quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+          startsAt?: string | null;
+          endsAt?: string | null;
+        };
+        analyticsId?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Who sees this section in the app
+   */
+  visibility?: {
+    audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+    tags?: string | null;
+    matchAllTags?: boolean | null;
+    excludeTags?: string | null;
+    matchAllExcludeTags?: boolean | null;
+    quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+    startsAt?: string | null;
+    endsAt?: string | null;
+  };
+  backgroundColor?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'imageSlider';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageScrollerBlock".
+ */
+export interface ImageScrollerBlock {
+  height?: number | null;
+  gap?: number | null;
+  items?:
+    | {
+        imageUrl: string;
+        width?: number | null;
+        height?: number | null;
+        action?: {
+          type?: ('openPage' | 'openCollection' | 'openProduct') | null;
+          target?: string | null;
+          title?: string | null;
+        };
+        /**
+         * Who sees this section in the app
+         */
+        visibility?: {
+          audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+          tags?: string | null;
+          matchAllTags?: boolean | null;
+          excludeTags?: string | null;
+          matchAllExcludeTags?: boolean | null;
+          quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+          startsAt?: string | null;
+          endsAt?: string | null;
+        };
+        analyticsId?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Who sees this section in the app
+   */
+  visibility?: {
+    audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+    tags?: string | null;
+    matchAllTags?: boolean | null;
+    excludeTags?: string | null;
+    matchAllExcludeTags?: boolean | null;
+    quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+    startsAt?: string | null;
+    endsAt?: string | null;
+  };
+  backgroundColor?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'imageScroller';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SpacerBlock".
+ */
+export interface SpacerBlock {
+  height?: number | null;
+  /**
+   * Who sees this section in the app
+   */
+  visibility?: {
+    audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+    tags?: string | null;
+    matchAllTags?: boolean | null;
+    excludeTags?: string | null;
+    matchAllExcludeTags?: boolean | null;
+    quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+    startsAt?: string | null;
+    endsAt?: string | null;
+  };
+  backgroundColor?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'spacer';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VideoBlock".
+ */
+export interface VideoBlock {
+  videoUrl?: string | null;
+  posterUrl?: string | null;
+  width?: number | null;
+  height?: number | null;
+  action?: {
+    type?: ('openPage' | 'openCollection' | 'openProduct') | null;
+    target?: string | null;
+    title?: string | null;
+  };
+  analyticsId?: string | null;
+  /**
+   * Who sees this section in the app
+   */
+  visibility?: {
+    audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+    tags?: string | null;
+    matchAllTags?: boolean | null;
+    excludeTags?: string | null;
+    matchAllExcludeTags?: boolean | null;
+    quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+    startsAt?: string | null;
+    endsAt?: string | null;
+  };
+  backgroundColor?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'video';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "QuickPickBlock".
+ */
+export interface QuickPickBlock {
+  itemWidth?: number | null;
+  itemHeight?: number | null;
+  itemGap?: number | null;
+  items?:
+    | {
+        activeImageUrl?: string | null;
+        inactiveImageUrl?: string | null;
+        /**
+         * Slug of the page this tab opens
+         */
+        pageId: string;
+        label?: string | null;
+        analyticsId?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Who sees this section in the app
+   */
+  visibility?: {
+    audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+    tags?: string | null;
+    matchAllTags?: boolean | null;
+    excludeTags?: string | null;
+    matchAllExcludeTags?: boolean | null;
+    quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+    startsAt?: string | null;
+    endsAt?: string | null;
+  };
+  backgroundColor?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'quickPick';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProductScrollerBlock".
+ */
+export interface ProductScrollerBlock {
+  /**
+   * Shopify collection GID
+   */
+  collectionId?: string | null;
+  title?: string | null;
+  /**
+   * Who sees this section in the app
+   */
+  visibility?: {
+    audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+    tags?: string | null;
+    matchAllTags?: boolean | null;
+    excludeTags?: string | null;
+    matchAllExcludeTags?: boolean | null;
+    quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+    startsAt?: string | null;
+    endsAt?: string | null;
+  };
+  backgroundColor?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'productScroller';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ReorderBlock".
+ */
+export interface ReorderBlock {
+  headerText?: string | null;
+  /**
+   * Who sees this section in the app
+   */
+  visibility?: {
+    audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+    tags?: string | null;
+    matchAllTags?: boolean | null;
+    excludeTags?: string | null;
+    matchAllExcludeTags?: boolean | null;
+    quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+    startsAt?: string | null;
+    endsAt?: string | null;
+  };
+  backgroundColor?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'reorder';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "WidgetBlock".
+ */
+export interface WidgetBlock {
+  /**
+   * App-owned widget key, e.g. clevertap
+   */
+  type: string;
+  config?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  /**
+   * Who sees this section in the app
+   */
+  visibility?: {
+    audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+    tags?: string | null;
+    matchAllTags?: boolean | null;
+    excludeTags?: string | null;
+    matchAllExcludeTags?: boolean | null;
+    quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+    startsAt?: string | null;
+    endsAt?: string | null;
+  };
+  backgroundColor?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'widget';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TabBarBlock".
+ */
+export interface TabBarBlock {
+  items?:
+    | {
+        label?: string | null;
+        pageId?: string | null;
+        iconUrl?: string | null;
+        isAll?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Who sees this section in the app
+   */
+  visibility?: {
+    audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+    tags?: string | null;
+    matchAllTags?: boolean | null;
+    excludeTags?: string | null;
+    matchAllExcludeTags?: boolean | null;
+    quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+    startsAt?: string | null;
+    endsAt?: string | null;
+  };
+  backgroundColor?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'tabBar';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1081,6 +1517,17 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
+        imageBanner?: T | ImageBannerBlockSelect<T>;
+        grid?: T | GridBlockSelect<T>;
+        imageSlider?: T | ImageSliderBlockSelect<T>;
+        imageScroller?: T | ImageScrollerBlockSelect<T>;
+        spacer?: T | SpacerBlockSelect<T>;
+        video?: T | VideoBlockSelect<T>;
+        quickPick?: T | QuickPickBlockSelect<T>;
+        productScroller?: T | ProductScrollerBlockSelect<T>;
+        reorder?: T | ReorderBlockSelect<T>;
+        widget?: T | WidgetBlockSelect<T>;
+        tabBar?: T | TabBarBlockSelect<T>;
       };
   meta?:
     | T
@@ -1177,6 +1624,394 @@ export interface FormBlockSelect<T extends boolean = true> {
   form?: T;
   enableIntro?: T;
   introContent?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageBannerBlock_select".
+ */
+export interface ImageBannerBlockSelect<T extends boolean = true> {
+  image?:
+    | T
+    | {
+        imageUrl?: T;
+        width?: T;
+        height?: T;
+        action?:
+          | T
+          | {
+              type?: T;
+              target?: T;
+              title?: T;
+            };
+        visibility?:
+          | T
+          | {
+              audience?: T;
+              tags?: T;
+              matchAllTags?: T;
+              excludeTags?: T;
+              matchAllExcludeTags?: T;
+              quickCommerce?: T;
+              startsAt?: T;
+              endsAt?: T;
+            };
+        analyticsId?: T;
+        id?: T;
+      };
+  visibility?:
+    | T
+    | {
+        audience?: T;
+        tags?: T;
+        matchAllTags?: T;
+        excludeTags?: T;
+        matchAllExcludeTags?: T;
+        quickCommerce?: T;
+        startsAt?: T;
+        endsAt?: T;
+      };
+  backgroundColor?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GridBlock_select".
+ */
+export interface GridBlockSelect<T extends boolean = true> {
+  columns?: T;
+  gap?: T;
+  items?:
+    | T
+    | {
+        imageUrl?: T;
+        width?: T;
+        height?: T;
+        action?:
+          | T
+          | {
+              type?: T;
+              target?: T;
+              title?: T;
+            };
+        visibility?:
+          | T
+          | {
+              audience?: T;
+              tags?: T;
+              matchAllTags?: T;
+              excludeTags?: T;
+              matchAllExcludeTags?: T;
+              quickCommerce?: T;
+              startsAt?: T;
+              endsAt?: T;
+            };
+        analyticsId?: T;
+        id?: T;
+      };
+  visibility?:
+    | T
+    | {
+        audience?: T;
+        tags?: T;
+        matchAllTags?: T;
+        excludeTags?: T;
+        matchAllExcludeTags?: T;
+        quickCommerce?: T;
+        startsAt?: T;
+        endsAt?: T;
+      };
+  backgroundColor?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageSliderBlock_select".
+ */
+export interface ImageSliderBlockSelect<T extends boolean = true> {
+  showPagination?: T;
+  items?:
+    | T
+    | {
+        imageUrl?: T;
+        width?: T;
+        height?: T;
+        action?:
+          | T
+          | {
+              type?: T;
+              target?: T;
+              title?: T;
+            };
+        visibility?:
+          | T
+          | {
+              audience?: T;
+              tags?: T;
+              matchAllTags?: T;
+              excludeTags?: T;
+              matchAllExcludeTags?: T;
+              quickCommerce?: T;
+              startsAt?: T;
+              endsAt?: T;
+            };
+        analyticsId?: T;
+        id?: T;
+      };
+  visibility?:
+    | T
+    | {
+        audience?: T;
+        tags?: T;
+        matchAllTags?: T;
+        excludeTags?: T;
+        matchAllExcludeTags?: T;
+        quickCommerce?: T;
+        startsAt?: T;
+        endsAt?: T;
+      };
+  backgroundColor?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageScrollerBlock_select".
+ */
+export interface ImageScrollerBlockSelect<T extends boolean = true> {
+  height?: T;
+  gap?: T;
+  items?:
+    | T
+    | {
+        imageUrl?: T;
+        width?: T;
+        height?: T;
+        action?:
+          | T
+          | {
+              type?: T;
+              target?: T;
+              title?: T;
+            };
+        visibility?:
+          | T
+          | {
+              audience?: T;
+              tags?: T;
+              matchAllTags?: T;
+              excludeTags?: T;
+              matchAllExcludeTags?: T;
+              quickCommerce?: T;
+              startsAt?: T;
+              endsAt?: T;
+            };
+        analyticsId?: T;
+        id?: T;
+      };
+  visibility?:
+    | T
+    | {
+        audience?: T;
+        tags?: T;
+        matchAllTags?: T;
+        excludeTags?: T;
+        matchAllExcludeTags?: T;
+        quickCommerce?: T;
+        startsAt?: T;
+        endsAt?: T;
+      };
+  backgroundColor?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SpacerBlock_select".
+ */
+export interface SpacerBlockSelect<T extends boolean = true> {
+  height?: T;
+  visibility?:
+    | T
+    | {
+        audience?: T;
+        tags?: T;
+        matchAllTags?: T;
+        excludeTags?: T;
+        matchAllExcludeTags?: T;
+        quickCommerce?: T;
+        startsAt?: T;
+        endsAt?: T;
+      };
+  backgroundColor?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VideoBlock_select".
+ */
+export interface VideoBlockSelect<T extends boolean = true> {
+  videoUrl?: T;
+  posterUrl?: T;
+  width?: T;
+  height?: T;
+  action?:
+    | T
+    | {
+        type?: T;
+        target?: T;
+        title?: T;
+      };
+  analyticsId?: T;
+  visibility?:
+    | T
+    | {
+        audience?: T;
+        tags?: T;
+        matchAllTags?: T;
+        excludeTags?: T;
+        matchAllExcludeTags?: T;
+        quickCommerce?: T;
+        startsAt?: T;
+        endsAt?: T;
+      };
+  backgroundColor?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "QuickPickBlock_select".
+ */
+export interface QuickPickBlockSelect<T extends boolean = true> {
+  itemWidth?: T;
+  itemHeight?: T;
+  itemGap?: T;
+  items?:
+    | T
+    | {
+        activeImageUrl?: T;
+        inactiveImageUrl?: T;
+        pageId?: T;
+        label?: T;
+        analyticsId?: T;
+        id?: T;
+      };
+  visibility?:
+    | T
+    | {
+        audience?: T;
+        tags?: T;
+        matchAllTags?: T;
+        excludeTags?: T;
+        matchAllExcludeTags?: T;
+        quickCommerce?: T;
+        startsAt?: T;
+        endsAt?: T;
+      };
+  backgroundColor?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProductScrollerBlock_select".
+ */
+export interface ProductScrollerBlockSelect<T extends boolean = true> {
+  collectionId?: T;
+  title?: T;
+  visibility?:
+    | T
+    | {
+        audience?: T;
+        tags?: T;
+        matchAllTags?: T;
+        excludeTags?: T;
+        matchAllExcludeTags?: T;
+        quickCommerce?: T;
+        startsAt?: T;
+        endsAt?: T;
+      };
+  backgroundColor?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ReorderBlock_select".
+ */
+export interface ReorderBlockSelect<T extends boolean = true> {
+  headerText?: T;
+  visibility?:
+    | T
+    | {
+        audience?: T;
+        tags?: T;
+        matchAllTags?: T;
+        excludeTags?: T;
+        matchAllExcludeTags?: T;
+        quickCommerce?: T;
+        startsAt?: T;
+        endsAt?: T;
+      };
+  backgroundColor?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "WidgetBlock_select".
+ */
+export interface WidgetBlockSelect<T extends boolean = true> {
+  type?: T;
+  config?: T;
+  visibility?:
+    | T
+    | {
+        audience?: T;
+        tags?: T;
+        matchAllTags?: T;
+        excludeTags?: T;
+        matchAllExcludeTags?: T;
+        quickCommerce?: T;
+        startsAt?: T;
+        endsAt?: T;
+      };
+  backgroundColor?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TabBarBlock_select".
+ */
+export interface TabBarBlockSelect<T extends boolean = true> {
+  items?:
+    | T
+    | {
+        label?: T;
+        pageId?: T;
+        iconUrl?: T;
+        isAll?: T;
+        id?: T;
+      };
+  visibility?:
+    | T
+    | {
+        audience?: T;
+        tags?: T;
+        matchAllTags?: T;
+        excludeTags?: T;
+        matchAllExcludeTags?: T;
+        quickCommerce?: T;
+        startsAt?: T;
+        endsAt?: T;
+      };
+  backgroundColor?: T;
   id?: T;
   blockName?: T;
 }
