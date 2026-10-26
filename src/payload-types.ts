@@ -72,6 +72,7 @@ export interface Config {
     media: Media;
     categories: Category;
     users: User;
+    layouts: Layout;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -94,6 +95,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
+    layouts: LayoutsSelect<false> | LayoutsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -112,10 +114,12 @@ export interface Config {
   globals: {
     header: Header;
     footer: Footer;
+    navigation: Navigation;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    navigation: NavigationSelect<false> | NavigationSelect<true>;
   };
   locale: null;
   widgets: {
@@ -1211,6 +1215,122 @@ export interface TabBarBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "layouts".
+ */
+export interface Layout {
+  id: number;
+  key: string;
+  title?: string | null;
+  headerBehavior?: ('fixed' | 'collapse' | 'reveal') | null;
+  header?: (ToolbarBlock | AddressBarBlock | SearchBarBlock | ImageBannerBlock | SpacerBlock)[] | null;
+  page?: (number | null) | Page;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ToolbarBlock".
+ */
+export interface ToolbarBlock {
+  logoUrl?: string | null;
+  logoWidth?: number | null;
+  logoHeight?: number | null;
+  icons?:
+    | {
+        icon: 'search' | 'wishlist' | 'cart' | 'coins' | 'referral' | 'notifications' | 'profile';
+        action?: {
+          type?: ('openPage' | 'openCollection' | 'openProduct') | null;
+          target?: string | null;
+          title?: string | null;
+        };
+        /**
+         * Who sees this section in the app
+         */
+        visibility?: {
+          audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+          tags?: string | null;
+          matchAllTags?: boolean | null;
+          excludeTags?: string | null;
+          matchAllExcludeTags?: boolean | null;
+          quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+          startsAt?: string | null;
+          endsAt?: string | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Who sees this section in the app
+   */
+  visibility?: {
+    audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+    tags?: string | null;
+    matchAllTags?: boolean | null;
+    excludeTags?: string | null;
+    matchAllExcludeTags?: boolean | null;
+    quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+    startsAt?: string | null;
+    endsAt?: string | null;
+  };
+  backgroundColor?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'toolbar';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AddressBarBlock".
+ */
+export interface AddressBarBlock {
+  placeholder?: string | null;
+  textColor?: string | null;
+  /**
+   * Who sees this section in the app
+   */
+  visibility?: {
+    audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+    tags?: string | null;
+    matchAllTags?: boolean | null;
+    excludeTags?: string | null;
+    matchAllExcludeTags?: boolean | null;
+    quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+    startsAt?: string | null;
+    endsAt?: string | null;
+  };
+  backgroundColor?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'addressBar';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SearchBarBlock".
+ */
+export interface SearchBarBlock {
+  imageUrl?: string | null;
+  width?: number | null;
+  height?: number | null;
+  placeholder?: string | null;
+  /**
+   * Who sees this section in the app
+   */
+  visibility?: {
+    audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+    tags?: string | null;
+    matchAllTags?: boolean | null;
+    excludeTags?: string | null;
+    matchAllExcludeTags?: boolean | null;
+    quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+    startsAt?: string | null;
+    endsAt?: string | null;
+  };
+  backgroundColor?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'searchBar';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1418,6 +1538,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'users';
         value: number | User;
+      } | null)
+    | ({
+        relationTo: 'layouts';
+        value: number | Layout;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -2186,6 +2310,124 @@ export interface UsersSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "layouts_select".
+ */
+export interface LayoutsSelect<T extends boolean = true> {
+  key?: T;
+  title?: T;
+  headerBehavior?: T;
+  header?:
+    | T
+    | {
+        toolbar?: T | ToolbarBlockSelect<T>;
+        addressBar?: T | AddressBarBlockSelect<T>;
+        searchBar?: T | SearchBarBlockSelect<T>;
+        imageBanner?: T | ImageBannerBlockSelect<T>;
+        spacer?: T | SpacerBlockSelect<T>;
+      };
+  page?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ToolbarBlock_select".
+ */
+export interface ToolbarBlockSelect<T extends boolean = true> {
+  logoUrl?: T;
+  logoWidth?: T;
+  logoHeight?: T;
+  icons?:
+    | T
+    | {
+        icon?: T;
+        action?:
+          | T
+          | {
+              type?: T;
+              target?: T;
+              title?: T;
+            };
+        visibility?:
+          | T
+          | {
+              audience?: T;
+              tags?: T;
+              matchAllTags?: T;
+              excludeTags?: T;
+              matchAllExcludeTags?: T;
+              quickCommerce?: T;
+              startsAt?: T;
+              endsAt?: T;
+            };
+        id?: T;
+      };
+  visibility?:
+    | T
+    | {
+        audience?: T;
+        tags?: T;
+        matchAllTags?: T;
+        excludeTags?: T;
+        matchAllExcludeTags?: T;
+        quickCommerce?: T;
+        startsAt?: T;
+        endsAt?: T;
+      };
+  backgroundColor?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AddressBarBlock_select".
+ */
+export interface AddressBarBlockSelect<T extends boolean = true> {
+  placeholder?: T;
+  textColor?: T;
+  visibility?:
+    | T
+    | {
+        audience?: T;
+        tags?: T;
+        matchAllTags?: T;
+        excludeTags?: T;
+        matchAllExcludeTags?: T;
+        quickCommerce?: T;
+        startsAt?: T;
+        endsAt?: T;
+      };
+  backgroundColor?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SearchBarBlock_select".
+ */
+export interface SearchBarBlockSelect<T extends boolean = true> {
+  imageUrl?: T;
+  width?: T;
+  height?: T;
+  placeholder?: T;
+  visibility?:
+    | T
+    | {
+        audience?: T;
+        tags?: T;
+        matchAllTags?: T;
+        excludeTags?: T;
+        matchAllExcludeTags?: T;
+        quickCommerce?: T;
+        startsAt?: T;
+        endsAt?: T;
+      };
+  backgroundColor?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects_select".
  */
 export interface RedirectsSelect<T extends boolean = true> {
@@ -2519,6 +2761,41 @@ export interface Footer {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "navigation".
+ */
+export interface Navigation {
+  id: number;
+  activeColor?: string | null;
+  inactiveColor?: string | null;
+  backgroundColor?: string | null;
+  tabs?:
+    | {
+        layoutKey: string;
+        label?: string | null;
+        iconUrl?: string | null;
+        activeIconUrl?: string | null;
+        iconSize?: number | null;
+        /**
+         * Who sees this section in the app
+         */
+        visibility?: {
+          audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+          tags?: string | null;
+          matchAllTags?: boolean | null;
+          excludeTags?: string | null;
+          matchAllExcludeTags?: boolean | null;
+          quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+          startsAt?: string | null;
+          endsAt?: string | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -2556,6 +2833,40 @@ export interface FooterSelect<T extends boolean = true> {
               reference?: T;
               url?: T;
               label?: T;
+            };
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "navigation_select".
+ */
+export interface NavigationSelect<T extends boolean = true> {
+  activeColor?: T;
+  inactiveColor?: T;
+  backgroundColor?: T;
+  tabs?:
+    | T
+    | {
+        layoutKey?: T;
+        label?: T;
+        iconUrl?: T;
+        activeIconUrl?: T;
+        iconSize?: T;
+        visibility?:
+          | T
+          | {
+              audience?: T;
+              tags?: T;
+              matchAllTags?: T;
+              excludeTags?: T;
+              matchAllExcludeTags?: T;
+              quickCommerce?: T;
+              startsAt?: T;
+              endsAt?: T;
             };
         id?: T;
       };

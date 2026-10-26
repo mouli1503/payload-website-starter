@@ -1,0 +1,314 @@
+{
+ "layouts": [
+  {
+   "key": "home",
+   "title": "Home",
+   "headerBehavior": "reveal",
+   "header": [
+    {
+     "logoUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/supertails_logo.webp?v=1775466931",
+     "logoWidth": 130,
+     "logoHeight": 30,
+     "backgroundColor": "#ffffff",
+     "visibility": null,
+     "icons": [
+      {
+       "icon": "search",
+       "action": null,
+       "visibility": null
+      },
+      {
+       "icon": "wishlist",
+       "action": null,
+       "visibility": null
+      },
+      {
+       "icon": "cart",
+       "action": null,
+       "visibility": null
+      }
+     ],
+     "__component": "header.toolbar"
+    },
+    {
+     "placeholder": "Deliver to: Select your location",
+     "textColor": "#0B1215",
+     "backgroundColor": "#fef5e1",
+     "visibility": null,
+     "__component": "header.address-bar"
+    },
+    {
+     "imageUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/SearchBar_d180ad08-dc68-44a7-8638-a6e03cb3ab97.gif?v=1792773938",
+     "width": 589,
+     "height": 87,
+     "placeholder": "Search for products",
+     "backgroundColor": null,
+     "visibility": null,
+     "__component": "header.search-bar"
+    }
+   ],
+   "page": "home"
+  },
+  {
+   "key": "categories",
+   "title": "Categories",
+   "headerBehavior": "reveal",
+   "header": [
+    {
+     "logoUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/supertails_logo.webp?v=1775466931",
+     "logoWidth": 130,
+     "logoHeight": 30,
+     "backgroundColor": "#ffffff",
+     "visibility": null,
+     "icons": [
+      {
+       "icon": "search",
+       "action": null,
+       "visibility": null
+      },
+      {
+       "icon": "wishlist",
+       "action": null,
+       "visibility": null
+      },
+      {
+       "icon": "cart",
+       "action": null,
+       "visibility": null
+      }
+     ],
+     "__component": "header.toolbar"
+    },
+    {
+     "imageUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/SearchBar_d180ad08-dc68-44a7-8638-a6e03cb3ab97.gif?v=1792773938",
+     "width": 589,
+     "height": 87,
+     "placeholder": "Search for products",
+     "backgroundColor": null,
+     "visibility": null,
+     "__component": "header.search-bar"
+    }
+   ],
+   "page": "gfoAsZZ0FC"
+  },
+  {
+   "key": "lifestyle",
+   "title": "Lifestyle",
+   "headerBehavior": "reveal",
+   "header": [
+    {
+     "logoUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/supertails_logo.webp?v=1775466931",
+     "logoWidth": 130,
+     "logoHeight": 30,
+     "backgroundColor": "#ffffff",
+     "visibility": null,
+     "icons": [
+      {
+       "icon": "search",
+       "action": null,
+       "visibility": null
+      },
+      {
+       "icon": "wishlist",
+       "action": null,
+       "visibility": null
+      },
+      {
+       "icon": "cart",
+       "action": null,
+       "visibility": null
+      }
+     ],
+     "__component": "header.toolbar"
+    },
+    {
+     "imageUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/SearchBar_d180ad08-dc68-44a7-8638-a6e03cb3ab97.gif?v=1792773938",
+     "width": 589,
+     "height": 87,
+     "placeholder": "Search for products",
+     "backgroundColor": null,
+     "visibility": null,
+     "__component": "header.search-bar"
+    }
+   ],
+   "page": "AunPScgIYa"
+  },
+  {
+   "key": "pharmacy",
+   "title": "Pharmacy",
+   "headerBehavior": "reveal",
+   "header": [
+    {
+     "logoUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/supertails_logo.webp?v=1775466931",
+     "logoWidth": 130,
+     "logoHeight": 30,
+     "backgroundColor": "#ffffff",
+     "visibility": null,
+     "icons": [
+      {
+       "icon": "search",
+       "action": null,
+       "visibility": null
+      },
+      {
+       "icon": "wishlist",
+       "action": null,
+       "visibility": null
+      },
+      {
+       "icon": "cart",
+       "action": null,
+       "visibility": null
+      }
+     ],
+     "__component": "header.toolbar"
+    },
+    {
+     "placeholder": "Deliver to: Select your location",
+     "textColor": "#0B1215",
+     "backgroundColor": "#fef5e1",
+     "visibility": null,
+     "__component": "header.address-bar"
+    },
+    {
+     "imageUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/SearchBar_d180ad08-dc68-44a7-8638-a6e03cb3ab97.gif?v=1792773938",
+     "width": 589,
+     "height": 87,
+     "placeholder": "Search for products",
+     "backgroundColor": null,
+     "visibility": null,
+     "__component": "header.search-bar"
+    }
+   ],
+   "page": "0GK4j03Kf8"
+  },
+  {
+   "key": "clinic",
+   "title": "Clinic",
+   "headerBehavior": "reveal",
+   "header": [
+    {
+     "logoUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/supertails_logo.webp?v=1775466931",
+     "logoWidth": 130,
+     "logoHeight": 30,
+     "backgroundColor": "#ffffff",
+     "visibility": null,
+     "icons": [
+      {
+       "icon": "search",
+       "action": null,
+       "visibility": null
+      },
+      {
+       "icon": "wishlist",
+       "action": null,
+       "visibility": null
+      },
+      {
+       "icon": "cart",
+       "action": null,
+       "visibility": null
+      }
+     ],
+     "__component": "header.toolbar"
+    },
+    {
+     "placeholder": "Deliver to: Select your location",
+     "textColor": "#0B1215",
+     "backgroundColor": "#fef5e1",
+     "visibility": null,
+     "__component": "header.address-bar"
+    }
+   ],
+   "page": "supertailsclinicveronica1"
+  },
+  {
+   "key": "account",
+   "title": "Account",
+   "headerBehavior": "fixed",
+   "header": [
+    {
+     "logoUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/supertails_logo.webp?v=1775466931",
+     "logoWidth": 130,
+     "logoHeight": 30,
+     "backgroundColor": "#ffffff",
+     "visibility": null,
+     "icons": [
+      {
+       "icon": "search",
+       "action": null,
+       "visibility": null
+      },
+      {
+       "icon": "wishlist",
+       "action": null,
+       "visibility": null
+      },
+      {
+       "icon": "cart",
+       "action": null,
+       "visibility": null
+      }
+     ],
+     "__component": "header.toolbar"
+    }
+   ],
+   "page": null
+  }
+ ],
+ "navigation": {
+  "activeColor": "#2c340c",
+  "inactiveColor": "#848484",
+  "backgroundColor": "#ffffff",
+  "tabs": [
+   {
+    "layoutKey": "home",
+    "label": "Home",
+    "iconUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/frame_1707511533.webp?v=1760507599",
+    "activeIconUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/frame_106723603_6b174cee-f866-4a00-94a1-deb3db5489ae.webp?v=1760507599",
+    "iconSize": 22,
+    "visibility": null
+   },
+   {
+    "layoutKey": "categories",
+    "label": "Categories",
+    "iconUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/frame_1707511535_ea2599ae-7fbc-4f59-bd4d-9d9dd9e086ad.webp?v=1760507599",
+    "activeIconUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/frame_1707511534.webp?v=1760507599",
+    "iconSize": 22,
+    "visibility": null
+   },
+   {
+    "layoutKey": "lifestyle",
+    "label": "Lifestyle",
+    "iconUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/frame_1707511540.webp?v=1760507599",
+    "activeIconUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/frame_1707511538.webp?v=1760507599",
+    "iconSize": 22,
+    "visibility": null
+   },
+   {
+    "layoutKey": "pharmacy",
+    "label": "Pharmacy",
+    "iconUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/frame_1707511537.webp?v=1760507599",
+    "activeIconUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/frame_1707511536.webp?v=1760507599",
+    "iconSize": 22,
+    "visibility": null
+   },
+   {
+    "layoutKey": "clinic",
+    "label": "Clinic",
+    "iconUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/frame_1707511542.webp?v=1760507599",
+    "activeIconUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/frame_1707511541.webp?v=1760507599",
+    "iconSize": 22,
+    "visibility": null
+   },
+   {
+    "layoutKey": "account",
+    "label": "Account",
+    "iconUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/frame_1707511544.webp?v=1760507599",
+    "activeIconUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/frame_1707511543.webp?v=1760507599",
+    "iconSize": 22,
+    "visibility": null
+   }
+  ]
+ }
+}

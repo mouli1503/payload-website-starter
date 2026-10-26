@@ -3,7 +3,7 @@ import type { Block, Field } from 'payload'
 // Supertails app home blocks, ported 1:1 from the Strapi `blocks.*` components.
 // Images are CDN URL strings (Shopify), not Media uploads, to match the app payload.
 
-const action: Field = {
+export const action: Field = {
   name: 'action',
   type: 'group',
   fields: [
@@ -21,7 +21,7 @@ const action: Field = {
   ],
 }
 
-const visibility: Field = {
+export const visibility: Field = {
   name: 'visibility',
   type: 'group',
   admin: { description: 'Who sees this section in the app' },
@@ -215,3 +215,56 @@ export const supertailsBlocks: Block[] = [
   Widget,
   TabBar,
 ]
+
+// Layout header slot blocks (Strapi `header.*`).
+export const Toolbar: Block = {
+  slug: 'toolbar',
+  interfaceName: 'ToolbarBlock',
+  fields: [
+    { name: 'logoUrl', type: 'text' },
+    { name: 'logoWidth', type: 'number', defaultValue: 130 },
+    { name: 'logoHeight', type: 'number', defaultValue: 30 },
+    {
+      name: 'icons',
+      type: 'array',
+      fields: [
+        {
+          name: 'icon',
+          type: 'select',
+          required: true,
+          options: ['search', 'wishlist', 'cart', 'coins', 'referral', 'notifications', 'profile'],
+        },
+        action,
+        visibility,
+      ],
+    },
+    visibility,
+    backgroundColor,
+  ],
+}
+
+export const AddressBar: Block = {
+  slug: 'addressBar',
+  interfaceName: 'AddressBarBlock',
+  fields: [
+    { name: 'placeholder', type: 'text', defaultValue: 'Deliver to: Select your location' },
+    { name: 'textColor', type: 'text' },
+    visibility,
+    backgroundColor,
+  ],
+}
+
+export const SearchBar: Block = {
+  slug: 'searchBar',
+  interfaceName: 'SearchBarBlock',
+  fields: [
+    { name: 'imageUrl', type: 'text' },
+    { name: 'width', type: 'number' },
+    { name: 'height', type: 'number' },
+    { name: 'placeholder', type: 'text' },
+    visibility,
+    backgroundColor,
+  ],
+}
+
+export const headerBlocks: Block[] = [Toolbar, AddressBar, SearchBar, ImageBanner, Spacer]
