@@ -1,7 +1,7 @@
 # Payload on a single small VM: Postgres + Payload (Next standalone) + Caddy for HTTPS.
 # Everything uses host networking: the Vercel Postgres adapter only talks plain `pg` to
 # localhost/127.0.0.1, and Postgres stays bound to loopback.
-# Run from the repo root: docker compose -f deploy/vm/docker-compose.yml up -d --build
+# Run from the repo root (see README.md for the build step): docker compose -f deploy/vm/docker-compose.yml up -d
 services:
   db:
     image: postgres:18-alpine
@@ -20,9 +20,9 @@ services:
       retries: 20
 
   app:
-    build:
-      context: ../..
-      network: host
+    # Built separately: `docker build --network host -t payload-cms .` (the build needs Postgres
+    # on localhost, and Compose's bake builder refuses host networking without extra flags).
+    image: payload-cms:latest
     restart: always
     network_mode: host
     env_file: ../../.env

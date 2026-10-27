@@ -19,5 +19,7 @@ PREVIEW_SECRET=...
 Deploy a new version (runs migrations, then builds):
 
 ```bash
-cd ~/payload && git pull && docker compose -f deploy/vm/docker-compose.yml up -d --build app
+cd ~/payload && git pull
+sudo docker build --network host -t payload-cms .
+sudo docker compose -f deploy/vm/docker-compose.yml --env-file .env up -d
 ```
