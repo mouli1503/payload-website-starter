@@ -10,13 +10,13 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 # Install dependencies based on the preferred package manager.
-# pnpm 10 reads the v9 lockfile (and `pnpm.onlyBuiltDependencies`); the pnpm 12 that corepack
-# would pick from `packageManager` can't.
+# ponytail: the committed pnpm-lock.yaml holds only pnpm's own env document (no project lockfile),
+# so installs resolve fresh, as on Vercel; commit a full lockfile to make builds reproducible.
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
 RUN \
   if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
   elif [ -f package-lock.json ]; then npm ci; \
-  elif [ -f pnpm-lock.yaml ]; then npm i -g pnpm@10 --silent && pnpm i --frozen-lockfile --config.manage-package-manager-versions=false; \
+  elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --no-frozen-lockfile; \
   else echo "Lockfile not found." && exit 1; \
   fi
 
