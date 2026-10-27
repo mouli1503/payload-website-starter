@@ -9,12 +9,14 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# Install dependencies based on the preferred package manager
+# Install dependencies based on the preferred package manager.
+# pnpm 10 reads the v9 lockfile (and `pnpm.onlyBuiltDependencies`); the pnpm 12 that corepack
+# would pick from `packageManager` can't.
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
 RUN \
   if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
   elif [ -f package-lock.json ]; then npm ci; \
-  elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --frozen-lockfile; \
+  elif [ -f pnpm-lock.yaml ]; then npm i -g pnpm@10 --silent && pnpm i --frozen-lockfile --config.manage-package-manager-versions=false; \
   else echo "Lockfile not found." && exit 1; \
   fi
 
