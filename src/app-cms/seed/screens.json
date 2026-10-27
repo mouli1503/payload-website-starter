@@ -1,259 +1,303 @@
 {
- "layouts": [
+ "screens": [
   {
    "key": "home",
    "title": "Home",
-   "headerBehavior": "reveal",
+   "body": "home",
    "header": [
     {
+     "blockType": "toolbar",
      "logoUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/supertails_logo.webp?v=1775466931",
      "logoWidth": 130,
      "logoHeight": 30,
      "backgroundColor": "#ffffff",
-     "visibility": null,
+     "animation": "none",
      "icons": [
       {
        "icon": "search",
-       "action": null,
-       "visibility": null
+       "action": {
+        "type": "openSearch"
+       }
       },
       {
-       "icon": "wishlist",
-       "action": null,
-       "visibility": null
+       "icon": "wishlist"
       },
       {
-       "icon": "cart",
-       "action": null,
-       "visibility": null
+       "icon": "cart"
       }
-     ],
-     "__component": "header.toolbar"
+     ]
     },
     {
+     "blockType": "addressBar",
      "placeholder": "Deliver to: Select your location",
      "textColor": "#0B1215",
      "backgroundColor": "#fef5e1",
-     "visibility": null,
-     "__component": "header.address-bar"
+     "animation": "none"
     },
     {
-     "imageUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/SearchBar_d180ad08-dc68-44a7-8638-a6e03cb3ab97.gif?v=1792773938",
-     "width": 589,
-     "height": 87,
-     "placeholder": "Search for products",
-     "backgroundColor": null,
-     "visibility": null,
-     "__component": "header.search-bar"
+     "blockType": "searchBar",
+     "hints": [
+      {
+       "text": "food"
+      },
+      {
+       "text": "treats"
+      },
+      {
+       "text": "toys"
+      },
+      {
+       "text": "ethnic wear"
+      },
+      {
+       "text": "medicines"
+      },
+      {
+       "text": "pet parent tshirt"
+      }
+     ],
+     "backgroundColor": "#fef5e1",
+     "sticky": true,
+     "animation": "none"
     }
-   ],
-   "page": "home"
+   ]
   },
   {
    "key": "categories",
    "title": "Categories",
-   "headerBehavior": "reveal",
+   "body": "gfoAsZZ0FC",
    "header": [
     {
+     "blockType": "toolbar",
      "logoUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/supertails_logo.webp?v=1775466931",
      "logoWidth": 130,
      "logoHeight": 30,
      "backgroundColor": "#ffffff",
-     "visibility": null,
+     "animation": "none",
      "icons": [
       {
        "icon": "search",
-       "action": null,
-       "visibility": null
+       "action": {
+        "type": "openSearch"
+       }
       },
       {
-       "icon": "wishlist",
-       "action": null,
-       "visibility": null
+       "icon": "wishlist"
       },
       {
-       "icon": "cart",
-       "action": null,
-       "visibility": null
+       "icon": "cart"
       }
-     ],
-     "__component": "header.toolbar"
+     ]
     },
     {
-     "imageUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/SearchBar_d180ad08-dc68-44a7-8638-a6e03cb3ab97.gif?v=1792773938",
-     "width": 589,
-     "height": 87,
-     "placeholder": "Search for products",
-     "backgroundColor": null,
-     "visibility": null,
-     "__component": "header.search-bar"
+     "blockType": "searchBar",
+     "hints": [
+      {
+       "text": "food"
+      },
+      {
+       "text": "treats"
+      },
+      {
+       "text": "toys"
+      },
+      {
+       "text": "ethnic wear"
+      },
+      {
+       "text": "medicines"
+      },
+      {
+       "text": "pet parent tshirt"
+      }
+     ],
+     "backgroundColor": "#fef5e1",
+     "sticky": true,
+     "animation": "none"
     }
-   ],
-   "page": "gfoAsZZ0FC"
+   ]
   },
   {
    "key": "lifestyle",
    "title": "Lifestyle",
-   "headerBehavior": "reveal",
+   "body": "AunPScgIYa",
    "header": [
     {
+     "blockType": "toolbar",
      "logoUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/supertails_logo.webp?v=1775466931",
      "logoWidth": 130,
      "logoHeight": 30,
      "backgroundColor": "#ffffff",
-     "visibility": null,
+     "animation": "none",
      "icons": [
       {
        "icon": "search",
-       "action": null,
-       "visibility": null
+       "action": {
+        "type": "openSearch"
+       }
       },
       {
-       "icon": "wishlist",
-       "action": null,
-       "visibility": null
+       "icon": "wishlist"
       },
       {
-       "icon": "cart",
-       "action": null,
-       "visibility": null
+       "icon": "cart"
       }
-     ],
-     "__component": "header.toolbar"
+     ]
     },
     {
-     "imageUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/SearchBar_d180ad08-dc68-44a7-8638-a6e03cb3ab97.gif?v=1792773938",
-     "width": 589,
-     "height": 87,
-     "placeholder": "Search for products",
-     "backgroundColor": null,
-     "visibility": null,
-     "__component": "header.search-bar"
+     "blockType": "searchBar",
+     "hints": [
+      {
+       "text": "food"
+      },
+      {
+       "text": "treats"
+      },
+      {
+       "text": "toys"
+      },
+      {
+       "text": "ethnic wear"
+      },
+      {
+       "text": "medicines"
+      },
+      {
+       "text": "pet parent tshirt"
+      }
+     ],
+     "backgroundColor": "#fef5e1",
+     "sticky": true,
+     "animation": "none"
     }
-   ],
-   "page": "AunPScgIYa"
+   ]
   },
   {
    "key": "pharmacy",
    "title": "Pharmacy",
-   "headerBehavior": "reveal",
+   "body": "0GK4j03Kf8",
    "header": [
     {
+     "blockType": "toolbar",
      "logoUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/supertails_logo.webp?v=1775466931",
      "logoWidth": 130,
      "logoHeight": 30,
      "backgroundColor": "#ffffff",
-     "visibility": null,
+     "animation": "none",
      "icons": [
       {
        "icon": "search",
-       "action": null,
-       "visibility": null
+       "action": {
+        "type": "openSearch"
+       }
       },
       {
-       "icon": "wishlist",
-       "action": null,
-       "visibility": null
+       "icon": "wishlist"
       },
       {
-       "icon": "cart",
-       "action": null,
-       "visibility": null
+       "icon": "cart"
       }
-     ],
-     "__component": "header.toolbar"
+     ]
     },
     {
+     "blockType": "addressBar",
      "placeholder": "Deliver to: Select your location",
      "textColor": "#0B1215",
      "backgroundColor": "#fef5e1",
-     "visibility": null,
-     "__component": "header.address-bar"
+     "animation": "none"
     },
     {
-     "imageUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/SearchBar_d180ad08-dc68-44a7-8638-a6e03cb3ab97.gif?v=1792773938",
-     "width": 589,
-     "height": 87,
-     "placeholder": "Search for products",
-     "backgroundColor": null,
-     "visibility": null,
-     "__component": "header.search-bar"
+     "blockType": "searchBar",
+     "hints": [
+      {
+       "text": "food"
+      },
+      {
+       "text": "treats"
+      },
+      {
+       "text": "toys"
+      },
+      {
+       "text": "ethnic wear"
+      },
+      {
+       "text": "medicines"
+      },
+      {
+       "text": "pet parent tshirt"
+      }
+     ],
+     "backgroundColor": "#fef5e1",
+     "sticky": true,
+     "animation": "none"
     }
-   ],
-   "page": "0GK4j03Kf8"
+   ]
   },
   {
    "key": "clinic",
    "title": "Clinic",
-   "headerBehavior": "reveal",
+   "body": "supertailsclinicveronica1",
    "header": [
     {
+     "blockType": "toolbar",
      "logoUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/supertails_logo.webp?v=1775466931",
      "logoWidth": 130,
      "logoHeight": 30,
      "backgroundColor": "#ffffff",
-     "visibility": null,
+     "animation": "none",
      "icons": [
       {
        "icon": "search",
-       "action": null,
-       "visibility": null
+       "action": {
+        "type": "openSearch"
+       }
       },
       {
-       "icon": "wishlist",
-       "action": null,
-       "visibility": null
+       "icon": "wishlist"
       },
       {
-       "icon": "cart",
-       "action": null,
-       "visibility": null
+       "icon": "cart"
       }
-     ],
-     "__component": "header.toolbar"
+     ]
     },
     {
+     "blockType": "addressBar",
      "placeholder": "Deliver to: Select your location",
      "textColor": "#0B1215",
      "backgroundColor": "#fef5e1",
-     "visibility": null,
-     "__component": "header.address-bar"
+     "animation": "none"
     }
-   ],
-   "page": "supertailsclinicveronica1"
+   ]
   },
   {
    "key": "account",
    "title": "Account",
-   "headerBehavior": "fixed",
+   "body": null,
    "header": [
     {
+     "blockType": "toolbar",
      "logoUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/supertails_logo.webp?v=1775466931",
      "logoWidth": 130,
      "logoHeight": 30,
      "backgroundColor": "#ffffff",
-     "visibility": null,
+     "animation": "none",
      "icons": [
       {
        "icon": "search",
-       "action": null,
-       "visibility": null
+       "action": {
+        "type": "openSearch"
+       }
       },
       {
-       "icon": "wishlist",
-       "action": null,
-       "visibility": null
+       "icon": "wishlist"
       },
       {
-       "icon": "cart",
-       "action": null,
-       "visibility": null
+       "icon": "cart"
       }
-     ],
-     "__component": "header.toolbar"
+     ]
     }
-   ],
-   "page": null
+   ]
   }
  ],
  "navigation": {
@@ -262,52 +306,46 @@
   "backgroundColor": "#ffffff",
   "tabs": [
    {
-    "layoutKey": "home",
+    "screen": "home",
     "label": "Home",
     "iconUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/frame_1707511533.webp?v=1760507599",
     "activeIconUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/frame_106723603_6b174cee-f866-4a00-94a1-deb3db5489ae.webp?v=1760507599",
-    "iconSize": 22,
-    "visibility": null
+    "iconSize": 22
    },
    {
-    "layoutKey": "categories",
+    "screen": "categories",
     "label": "Categories",
     "iconUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/frame_1707511535_ea2599ae-7fbc-4f59-bd4d-9d9dd9e086ad.webp?v=1760507599",
     "activeIconUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/frame_1707511534.webp?v=1760507599",
-    "iconSize": 22,
-    "visibility": null
+    "iconSize": 22
    },
    {
-    "layoutKey": "lifestyle",
+    "screen": "lifestyle",
     "label": "Lifestyle",
     "iconUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/frame_1707511540.webp?v=1760507599",
     "activeIconUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/frame_1707511538.webp?v=1760507599",
-    "iconSize": 22,
-    "visibility": null
+    "iconSize": 22
    },
    {
-    "layoutKey": "pharmacy",
+    "screen": "pharmacy",
     "label": "Pharmacy",
     "iconUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/frame_1707511537.webp?v=1760507599",
     "activeIconUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/frame_1707511536.webp?v=1760507599",
-    "iconSize": 22,
-    "visibility": null
+    "iconSize": 22
    },
    {
-    "layoutKey": "clinic",
+    "screen": "clinic",
     "label": "Clinic",
     "iconUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/frame_1707511542.webp?v=1760507599",
     "activeIconUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/frame_1707511541.webp?v=1760507599",
-    "iconSize": 22,
-    "visibility": null
+    "iconSize": 22
    },
    {
-    "layoutKey": "account",
+    "screen": "account",
     "label": "Account",
     "iconUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/frame_1707511544.webp?v=1760507599",
     "activeIconUrl": "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/frame_1707511543.webp?v=1760507599",
-    "iconSize": 22,
-    "visibility": null
+    "iconSize": 22
    }
   ]
  }

@@ -72,7 +72,8 @@ export interface Config {
     media: Media;
     categories: Category;
     users: User;
-    layouts: Layout;
+    'app-pages': AppPage;
+    screens: Screen;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -95,7 +96,8 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
-    layouts: LayoutsSelect<false> | LayoutsSelect<true>;
+    'app-pages': AppPagesSelect<false> | AppPagesSelect<true>;
+    screens: ScreensSelect<false> | ScreensSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -114,12 +116,12 @@ export interface Config {
   globals: {
     header: Header;
     footer: Footer;
-    navigation: Navigation;
+    'app-navigation': AppNavigation;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
-    navigation: NavigationSelect<false> | NavigationSelect<true>;
+    'app-navigation': AppNavigationSelect<false> | AppNavigationSelect<true>;
   };
   locale: null;
   widgets: {
@@ -205,24 +207,7 @@ export interface Page {
       | null;
     media?: (number | null) | Media;
   };
-  layout: (
-    | CallToActionBlock
-    | ContentBlock
-    | MediaBlock
-    | ArchiveBlock
-    | FormBlock
-    | ImageBannerBlock
-    | GridBlock
-    | ImageSliderBlock
-    | ImageScrollerBlock
-    | SpacerBlock
-    | VideoBlock
-    | QuickPickBlock
-    | ProductScrollerBlock
-    | ReorderBlock
-    | WidgetBlock
-    | TabBarBlock
-  )[];
+  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
   meta?: {
     title?: string | null;
     /**
@@ -796,161 +781,80 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ImageBannerBlock".
+ * via the `definition` "app-pages".
  */
-export interface ImageBannerBlock {
-  image: {
-    imageUrl: string;
-    width?: number | null;
-    height?: number | null;
-    action?: {
-      type?: ('openPage' | 'openCollection' | 'openProduct') | null;
-      target?: string | null;
-      title?: string | null;
-    };
-    /**
-     * Who sees this section in the app
-     */
-    visibility?: {
-      audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
-      tags?: string | null;
-      matchAllTags?: boolean | null;
-      excludeTags?: string | null;
-      matchAllExcludeTags?: boolean | null;
-      quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
-      startsAt?: string | null;
-      endsAt?: string | null;
-    };
-    analyticsId?: string | null;
-    id?: string | null;
-  };
-  /**
-   * Who sees this section in the app
-   */
-  visibility?: {
-    audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
-    tags?: string | null;
-    matchAllTags?: boolean | null;
-    excludeTags?: string | null;
-    matchAllExcludeTags?: boolean | null;
-    quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
-    startsAt?: string | null;
-    endsAt?: string | null;
-  };
-  backgroundColor?: string | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'imageBanner';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "GridBlock".
- */
-export interface GridBlock {
-  columns?: number | null;
-  gap?: boolean | null;
-  items?:
-    | {
-        imageUrl: string;
-        width?: number | null;
-        height?: number | null;
-        action?: {
-          type?: ('openPage' | 'openCollection' | 'openProduct') | null;
-          target?: string | null;
-          title?: string | null;
-        };
-        /**
-         * Who sees this section in the app
-         */
-        visibility?: {
-          audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
-          tags?: string | null;
-          matchAllTags?: boolean | null;
-          excludeTags?: string | null;
-          matchAllExcludeTags?: boolean | null;
-          quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
-          startsAt?: string | null;
-          endsAt?: string | null;
-        };
-        analyticsId?: string | null;
-        id?: string | null;
-      }[]
+export interface AppPage {
+  id: number;
+  title: string;
+  slug: string;
+  blocks?:
+    | (
+        | AppImageBlock
+        | AppImageGridBlock
+        | AppCarouselBlock
+        | AppImageRailBlock
+        | AppVideoBlock
+        | AppSpacerBlock
+        | AppTextBlock
+        | AppProductRailBlock
+        | AppReorderBlock
+        | AppSegmentTabsBlock
+        | AppCategoryTabsBlock
+        | AppWidgetBlock
+      )[]
     | null;
-  /**
-   * Who sees this section in the app
-   */
-  visibility?: {
-    audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
-    tags?: string | null;
-    matchAllTags?: boolean | null;
-    excludeTags?: string | null;
-    matchAllExcludeTags?: boolean | null;
-    quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
-    startsAt?: string | null;
-    endsAt?: string | null;
-  };
-  backgroundColor?: string | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'grid';
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ImageSliderBlock".
+ * via the `definition` "AppImageBlock".
  */
-export interface ImageSliderBlock {
-  showPagination?: boolean | null;
-  items?:
-    | {
-        imageUrl: string;
-        width?: number | null;
-        height?: number | null;
-        action?: {
-          type?: ('openPage' | 'openCollection' | 'openProduct') | null;
-          target?: string | null;
-          title?: string | null;
-        };
-        /**
-         * Who sees this section in the app
-         */
-        visibility?: {
-          audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
-          tags?: string | null;
-          matchAllTags?: boolean | null;
-          excludeTags?: string | null;
-          matchAllExcludeTags?: boolean | null;
-          quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
-          startsAt?: string | null;
-          endsAt?: string | null;
-        };
-        analyticsId?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Who sees this section in the app
-   */
-  visibility?: {
-    audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
-    tags?: string | null;
-    matchAllTags?: boolean | null;
-    excludeTags?: string | null;
-    matchAllExcludeTags?: boolean | null;
-    quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
-    startsAt?: string | null;
-    endsAt?: string | null;
-  };
-  backgroundColor?: string | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'imageSlider';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ImageScrollerBlock".
- */
-export interface ImageScrollerBlock {
+export interface AppImageBlock {
+  imageUrl: string;
+  width?: number | null;
   height?: number | null;
+  action?: {
+    type?: ('openPage' | 'openCollection' | 'openProduct' | 'openSearch' | 'openUrl') | null;
+    /**
+     * Page slug, collection/product GID or URL
+     */
+    target?: string | null;
+    title?: string | null;
+  };
+  /**
+   * Pin to top on scroll
+   */
+  sticky?: boolean | null;
+  animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
+  backgroundColor?: string | null;
+  analyticsId?: string | null;
+  /**
+   * Personalisation: leave empty to show to everyone
+   */
+  targeting?: {
+    audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+    /**
+     * Comma separated, e.g. city:Bangalore
+     */
+    includeTags?: string | null;
+    matchAllInclude?: boolean | null;
+    excludeTags?: string | null;
+    matchAllExclude?: boolean | null;
+    quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+    startsAt?: string | null;
+    endsAt?: string | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'image';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AppImageGridBlock".
+ */
+export interface AppImageGridBlock {
+  columns?: number | null;
   gap?: number | null;
   items?:
     | {
@@ -958,201 +862,515 @@ export interface ImageScrollerBlock {
         width?: number | null;
         height?: number | null;
         action?: {
-          type?: ('openPage' | 'openCollection' | 'openProduct') | null;
+          type?: ('openPage' | 'openCollection' | 'openProduct' | 'openSearch' | 'openUrl') | null;
+          /**
+           * Page slug, collection/product GID or URL
+           */
           target?: string | null;
           title?: string | null;
         };
+        analyticsId?: string | null;
         /**
-         * Who sees this section in the app
+         * Personalisation: leave empty to show to everyone
          */
-        visibility?: {
+        targeting?: {
           audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
-          tags?: string | null;
-          matchAllTags?: boolean | null;
+          /**
+           * Comma separated, e.g. city:Bangalore
+           */
+          includeTags?: string | null;
+          matchAllInclude?: boolean | null;
           excludeTags?: string | null;
-          matchAllExcludeTags?: boolean | null;
+          matchAllExclude?: boolean | null;
           quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
           startsAt?: string | null;
           endsAt?: string | null;
         };
-        analyticsId?: string | null;
         id?: string | null;
       }[]
     | null;
   /**
-   * Who sees this section in the app
+   * Pin to top on scroll
    */
-  visibility?: {
-    audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
-    tags?: string | null;
-    matchAllTags?: boolean | null;
-    excludeTags?: string | null;
-    matchAllExcludeTags?: boolean | null;
-    quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
-    startsAt?: string | null;
-    endsAt?: string | null;
-  };
+  sticky?: boolean | null;
+  animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
   backgroundColor?: string | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'imageScroller';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "SpacerBlock".
- */
-export interface SpacerBlock {
-  height?: number | null;
+  analyticsId?: string | null;
   /**
-   * Who sees this section in the app
+   * Personalisation: leave empty to show to everyone
    */
-  visibility?: {
+  targeting?: {
     audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
-    tags?: string | null;
-    matchAllTags?: boolean | null;
+    /**
+     * Comma separated, e.g. city:Bangalore
+     */
+    includeTags?: string | null;
+    matchAllInclude?: boolean | null;
     excludeTags?: string | null;
-    matchAllExcludeTags?: boolean | null;
+    matchAllExclude?: boolean | null;
     quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
     startsAt?: string | null;
     endsAt?: string | null;
   };
-  backgroundColor?: string | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'spacer';
+  blockType: 'imageGrid';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "VideoBlock".
+ * via the `definition` "AppCarouselBlock".
  */
-export interface VideoBlock {
+export interface AppCarouselBlock {
+  autoplay?: boolean | null;
+  intervalMs?: number | null;
+  showDots?: boolean | null;
+  items?:
+    | {
+        imageUrl: string;
+        width?: number | null;
+        height?: number | null;
+        action?: {
+          type?: ('openPage' | 'openCollection' | 'openProduct' | 'openSearch' | 'openUrl') | null;
+          /**
+           * Page slug, collection/product GID or URL
+           */
+          target?: string | null;
+          title?: string | null;
+        };
+        analyticsId?: string | null;
+        /**
+         * Personalisation: leave empty to show to everyone
+         */
+        targeting?: {
+          audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+          /**
+           * Comma separated, e.g. city:Bangalore
+           */
+          includeTags?: string | null;
+          matchAllInclude?: boolean | null;
+          excludeTags?: string | null;
+          matchAllExclude?: boolean | null;
+          quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+          startsAt?: string | null;
+          endsAt?: string | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Pin to top on scroll
+   */
+  sticky?: boolean | null;
+  animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
+  backgroundColor?: string | null;
+  analyticsId?: string | null;
+  /**
+   * Personalisation: leave empty to show to everyone
+   */
+  targeting?: {
+    audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+    /**
+     * Comma separated, e.g. city:Bangalore
+     */
+    includeTags?: string | null;
+    matchAllInclude?: boolean | null;
+    excludeTags?: string | null;
+    matchAllExclude?: boolean | null;
+    quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+    startsAt?: string | null;
+    endsAt?: string | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'carousel';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AppImageRailBlock".
+ */
+export interface AppImageRailBlock {
+  itemHeight?: number | null;
+  gap?: number | null;
+  items?:
+    | {
+        imageUrl: string;
+        width?: number | null;
+        height?: number | null;
+        action?: {
+          type?: ('openPage' | 'openCollection' | 'openProduct' | 'openSearch' | 'openUrl') | null;
+          /**
+           * Page slug, collection/product GID or URL
+           */
+          target?: string | null;
+          title?: string | null;
+        };
+        analyticsId?: string | null;
+        /**
+         * Personalisation: leave empty to show to everyone
+         */
+        targeting?: {
+          audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+          /**
+           * Comma separated, e.g. city:Bangalore
+           */
+          includeTags?: string | null;
+          matchAllInclude?: boolean | null;
+          excludeTags?: string | null;
+          matchAllExclude?: boolean | null;
+          quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+          startsAt?: string | null;
+          endsAt?: string | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Pin to top on scroll
+   */
+  sticky?: boolean | null;
+  animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
+  backgroundColor?: string | null;
+  analyticsId?: string | null;
+  /**
+   * Personalisation: leave empty to show to everyone
+   */
+  targeting?: {
+    audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+    /**
+     * Comma separated, e.g. city:Bangalore
+     */
+    includeTags?: string | null;
+    matchAllInclude?: boolean | null;
+    excludeTags?: string | null;
+    matchAllExclude?: boolean | null;
+    quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+    startsAt?: string | null;
+    endsAt?: string | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'imageRail';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AppVideoBlock".
+ */
+export interface AppVideoBlock {
   videoUrl?: string | null;
   posterUrl?: string | null;
   width?: number | null;
   height?: number | null;
   action?: {
-    type?: ('openPage' | 'openCollection' | 'openProduct') | null;
+    type?: ('openPage' | 'openCollection' | 'openProduct' | 'openSearch' | 'openUrl') | null;
+    /**
+     * Page slug, collection/product GID or URL
+     */
     target?: string | null;
     title?: string | null;
   };
+  /**
+   * Pin to top on scroll
+   */
+  sticky?: boolean | null;
+  animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
+  backgroundColor?: string | null;
   analyticsId?: string | null;
   /**
-   * Who sees this section in the app
+   * Personalisation: leave empty to show to everyone
    */
-  visibility?: {
+  targeting?: {
     audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
-    tags?: string | null;
-    matchAllTags?: boolean | null;
+    /**
+     * Comma separated, e.g. city:Bangalore
+     */
+    includeTags?: string | null;
+    matchAllInclude?: boolean | null;
     excludeTags?: string | null;
-    matchAllExcludeTags?: boolean | null;
+    matchAllExclude?: boolean | null;
     quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
     startsAt?: string | null;
     endsAt?: string | null;
   };
-  backgroundColor?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'video';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "QuickPickBlock".
+ * via the `definition` "AppSpacerBlock".
  */
-export interface QuickPickBlock {
-  itemWidth?: number | null;
-  itemHeight?: number | null;
-  itemGap?: number | null;
-  items?:
-    | {
-        activeImageUrl?: string | null;
-        inactiveImageUrl?: string | null;
-        /**
-         * Slug of the page this tab opens
-         */
-        pageId: string;
-        label?: string | null;
-        analyticsId?: string | null;
-        id?: string | null;
-      }[]
-    | null;
+export interface AppSpacerBlock {
+  height?: number | null;
   /**
-   * Who sees this section in the app
+   * Pin to top on scroll
    */
-  visibility?: {
+  sticky?: boolean | null;
+  animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
+  backgroundColor?: string | null;
+  analyticsId?: string | null;
+  /**
+   * Personalisation: leave empty to show to everyone
+   */
+  targeting?: {
     audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
-    tags?: string | null;
-    matchAllTags?: boolean | null;
+    /**
+     * Comma separated, e.g. city:Bangalore
+     */
+    includeTags?: string | null;
+    matchAllInclude?: boolean | null;
     excludeTags?: string | null;
-    matchAllExcludeTags?: boolean | null;
+    matchAllExclude?: boolean | null;
     quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
     startsAt?: string | null;
     endsAt?: string | null;
   };
-  backgroundColor?: string | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'quickPick';
+  blockType: 'spacer';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ProductScrollerBlock".
+ * via the `definition` "AppTextBlock".
  */
-export interface ProductScrollerBlock {
+export interface AppTextBlock {
+  text: string;
+  align?: ('left' | 'center' | 'right') | null;
+  fontSize?: number | null;
+  bold?: boolean | null;
+  color?: string | null;
+  /**
+   * Pin to top on scroll
+   */
+  sticky?: boolean | null;
+  animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
+  backgroundColor?: string | null;
+  analyticsId?: string | null;
+  /**
+   * Personalisation: leave empty to show to everyone
+   */
+  targeting?: {
+    audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+    /**
+     * Comma separated, e.g. city:Bangalore
+     */
+    includeTags?: string | null;
+    matchAllInclude?: boolean | null;
+    excludeTags?: string | null;
+    matchAllExclude?: boolean | null;
+    quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+    startsAt?: string | null;
+    endsAt?: string | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'text';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AppProductRailBlock".
+ */
+export interface AppProductRailBlock {
+  title?: string | null;
   /**
    * Shopify collection GID
    */
   collectionId?: string | null;
-  title?: string | null;
   /**
-   * Who sees this section in the app
+   * Pin to top on scroll
    */
-  visibility?: {
+  sticky?: boolean | null;
+  animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
+  backgroundColor?: string | null;
+  analyticsId?: string | null;
+  /**
+   * Personalisation: leave empty to show to everyone
+   */
+  targeting?: {
     audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
-    tags?: string | null;
-    matchAllTags?: boolean | null;
+    /**
+     * Comma separated, e.g. city:Bangalore
+     */
+    includeTags?: string | null;
+    matchAllInclude?: boolean | null;
     excludeTags?: string | null;
-    matchAllExcludeTags?: boolean | null;
+    matchAllExclude?: boolean | null;
     quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
     startsAt?: string | null;
     endsAt?: string | null;
   };
-  backgroundColor?: string | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'productScroller';
+  blockType: 'productRail';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ReorderBlock".
+ * via the `definition` "AppReorderBlock".
  */
-export interface ReorderBlock {
+export interface AppReorderBlock {
   headerText?: string | null;
   /**
-   * Who sees this section in the app
+   * Pin to top on scroll
    */
-  visibility?: {
+  sticky?: boolean | null;
+  animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
+  backgroundColor?: string | null;
+  analyticsId?: string | null;
+  /**
+   * Personalisation: leave empty to show to everyone
+   */
+  targeting?: {
     audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
-    tags?: string | null;
-    matchAllTags?: boolean | null;
+    /**
+     * Comma separated, e.g. city:Bangalore
+     */
+    includeTags?: string | null;
+    matchAllInclude?: boolean | null;
     excludeTags?: string | null;
-    matchAllExcludeTags?: boolean | null;
+    matchAllExclude?: boolean | null;
     quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
     startsAt?: string | null;
     endsAt?: string | null;
   };
-  backgroundColor?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'reorder';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "WidgetBlock".
+ * via the `definition` "AppSegmentTabsBlock".
  */
-export interface WidgetBlock {
+export interface AppSegmentTabsBlock {
+  items?:
+    | {
+        label?: string | null;
+        iconUrl?: string | null;
+        /**
+         * App page slug
+         */
+        page: string;
+        /**
+         * Personalisation: leave empty to show to everyone
+         */
+        targeting?: {
+          audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+          /**
+           * Comma separated, e.g. city:Bangalore
+           */
+          includeTags?: string | null;
+          matchAllInclude?: boolean | null;
+          excludeTags?: string | null;
+          matchAllExclude?: boolean | null;
+          quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+          startsAt?: string | null;
+          endsAt?: string | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  colors?: {
+    background?: string | null;
+    activeFrom?: string | null;
+    activeTo?: string | null;
+    activeText?: string | null;
+    inactiveText?: string | null;
+    border?: string | null;
+  };
   /**
-   * App-owned widget key, e.g. clevertap
+   * Pin to top on scroll
    */
+  sticky?: boolean | null;
+  animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
+  backgroundColor?: string | null;
+  analyticsId?: string | null;
+  /**
+   * Personalisation: leave empty to show to everyone
+   */
+  targeting?: {
+    audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+    /**
+     * Comma separated, e.g. city:Bangalore
+     */
+    includeTags?: string | null;
+    matchAllInclude?: boolean | null;
+    excludeTags?: string | null;
+    matchAllExclude?: boolean | null;
+    quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+    startsAt?: string | null;
+    endsAt?: string | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'segmentTabs';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AppCategoryTabsBlock".
+ */
+export interface AppCategoryTabsBlock {
+  itemWidth?: number | null;
+  itemHeight?: number | null;
+  gap?: number | null;
+  items?:
+    | {
+        label?: string | null;
+        activeImageUrl?: string | null;
+        inactiveImageUrl?: string | null;
+        /**
+         * App page slug
+         */
+        page: string;
+        analyticsId?: string | null;
+        /**
+         * Personalisation: leave empty to show to everyone
+         */
+        targeting?: {
+          audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+          /**
+           * Comma separated, e.g. city:Bangalore
+           */
+          includeTags?: string | null;
+          matchAllInclude?: boolean | null;
+          excludeTags?: string | null;
+          matchAllExclude?: boolean | null;
+          quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+          startsAt?: string | null;
+          endsAt?: string | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Pin to top on scroll
+   */
+  sticky?: boolean | null;
+  animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
+  backgroundColor?: string | null;
+  analyticsId?: string | null;
+  /**
+   * Personalisation: leave empty to show to everyone
+   */
+  targeting?: {
+    audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
+    /**
+     * Comma separated, e.g. city:Bangalore
+     */
+    includeTags?: string | null;
+    matchAllInclude?: boolean | null;
+    excludeTags?: string | null;
+    matchAllExclude?: boolean | null;
+    quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
+    startsAt?: string | null;
+    endsAt?: string | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'categoryTabs';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AppWidgetBlock".
+ */
+export interface AppWidgetBlock {
   type: string;
   config?:
     | {
@@ -1164,74 +1382,51 @@ export interface WidgetBlock {
     | boolean
     | null;
   /**
-   * Who sees this section in the app
+   * Pin to top on scroll
    */
-  visibility?: {
+  sticky?: boolean | null;
+  animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
+  backgroundColor?: string | null;
+  analyticsId?: string | null;
+  /**
+   * Personalisation: leave empty to show to everyone
+   */
+  targeting?: {
     audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
-    tags?: string | null;
-    matchAllTags?: boolean | null;
+    /**
+     * Comma separated, e.g. city:Bangalore
+     */
+    includeTags?: string | null;
+    matchAllInclude?: boolean | null;
     excludeTags?: string | null;
-    matchAllExcludeTags?: boolean | null;
+    matchAllExclude?: boolean | null;
     quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
     startsAt?: string | null;
     endsAt?: string | null;
   };
-  backgroundColor?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'widget';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "TabBarBlock".
+ * via the `definition` "screens".
  */
-export interface TabBarBlock {
-  items?:
-    | {
-        label?: string | null;
-        pageId?: string | null;
-        iconUrl?: string | null;
-        isAll?: boolean | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Who sees this section in the app
-   */
-  visibility?: {
-    audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
-    tags?: string | null;
-    matchAllTags?: boolean | null;
-    excludeTags?: string | null;
-    matchAllExcludeTags?: boolean | null;
-    quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
-    startsAt?: string | null;
-    endsAt?: string | null;
-  };
-  backgroundColor?: string | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'tabBar';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "layouts".
- */
-export interface Layout {
+export interface Screen {
   id: number;
   key: string;
   title?: string | null;
-  headerBehavior?: ('fixed' | 'collapse' | 'reveal') | null;
-  header?: (ToolbarBlock | AddressBarBlock | SearchBarBlock | ImageBannerBlock | SpacerBlock)[] | null;
-  page?: (number | null) | Page;
+  header?:
+    (AppToolbarBlock | AppAddressBarBlock | AppSearchBarBlock | AppImageBlock | AppSpacerBlock | AppTextBlock)[] | null;
+  body?: (number | null) | AppPage;
   updatedAt: string;
   createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ToolbarBlock".
+ * via the `definition` "AppToolbarBlock".
  */
-export interface ToolbarBlock {
+export interface AppToolbarBlock {
   logoUrl?: string | null;
   logoWidth?: number | null;
   logoHeight?: number | null;
@@ -1239,92 +1434,114 @@ export interface ToolbarBlock {
     | {
         icon: 'search' | 'wishlist' | 'cart' | 'coins' | 'referral' | 'notifications' | 'profile';
         action?: {
-          type?: ('openPage' | 'openCollection' | 'openProduct') | null;
+          type?: ('openPage' | 'openCollection' | 'openProduct' | 'openSearch' | 'openUrl') | null;
+          /**
+           * Page slug, collection/product GID or URL
+           */
           target?: string | null;
           title?: string | null;
-        };
-        /**
-         * Who sees this section in the app
-         */
-        visibility?: {
-          audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
-          tags?: string | null;
-          matchAllTags?: boolean | null;
-          excludeTags?: string | null;
-          matchAllExcludeTags?: boolean | null;
-          quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
-          startsAt?: string | null;
-          endsAt?: string | null;
         };
         id?: string | null;
       }[]
     | null;
   /**
-   * Who sees this section in the app
+   * Pin to top on scroll
    */
-  visibility?: {
+  sticky?: boolean | null;
+  animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
+  backgroundColor?: string | null;
+  analyticsId?: string | null;
+  /**
+   * Personalisation: leave empty to show to everyone
+   */
+  targeting?: {
     audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
-    tags?: string | null;
-    matchAllTags?: boolean | null;
+    /**
+     * Comma separated, e.g. city:Bangalore
+     */
+    includeTags?: string | null;
+    matchAllInclude?: boolean | null;
     excludeTags?: string | null;
-    matchAllExcludeTags?: boolean | null;
+    matchAllExclude?: boolean | null;
     quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
     startsAt?: string | null;
     endsAt?: string | null;
   };
-  backgroundColor?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'toolbar';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "AddressBarBlock".
+ * via the `definition` "AppAddressBarBlock".
  */
-export interface AddressBarBlock {
+export interface AppAddressBarBlock {
   placeholder?: string | null;
   textColor?: string | null;
   /**
-   * Who sees this section in the app
+   * Pin to top on scroll
    */
-  visibility?: {
+  sticky?: boolean | null;
+  animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
+  backgroundColor?: string | null;
+  analyticsId?: string | null;
+  /**
+   * Personalisation: leave empty to show to everyone
+   */
+  targeting?: {
     audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
-    tags?: string | null;
-    matchAllTags?: boolean | null;
+    /**
+     * Comma separated, e.g. city:Bangalore
+     */
+    includeTags?: string | null;
+    matchAllInclude?: boolean | null;
     excludeTags?: string | null;
-    matchAllExcludeTags?: boolean | null;
+    matchAllExclude?: boolean | null;
     quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
     startsAt?: string | null;
     endsAt?: string | null;
   };
-  backgroundColor?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'addressBar';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "SearchBarBlock".
+ * via the `definition` "AppSearchBarBlock".
  */
-export interface SearchBarBlock {
-  imageUrl?: string | null;
-  width?: number | null;
-  height?: number | null;
-  placeholder?: string | null;
+export interface AppSearchBarBlock {
   /**
-   * Who sees this section in the app
+   * Rotating placeholder words
    */
-  visibility?: {
+  hints?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Pin to top on scroll
+   */
+  sticky?: boolean | null;
+  animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
+  backgroundColor?: string | null;
+  analyticsId?: string | null;
+  /**
+   * Personalisation: leave empty to show to everyone
+   */
+  targeting?: {
     audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
-    tags?: string | null;
-    matchAllTags?: boolean | null;
+    /**
+     * Comma separated, e.g. city:Bangalore
+     */
+    includeTags?: string | null;
+    matchAllInclude?: boolean | null;
     excludeTags?: string | null;
-    matchAllExcludeTags?: boolean | null;
+    matchAllExclude?: boolean | null;
     quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
     startsAt?: string | null;
     endsAt?: string | null;
   };
-  backgroundColor?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'searchBar';
@@ -1540,8 +1757,12 @@ export interface PayloadLockedDocument {
         value: number | User;
       } | null)
     | ({
-        relationTo: 'layouts';
-        value: number | Layout;
+        relationTo: 'app-pages';
+        value: number | AppPage;
+      } | null)
+    | ({
+        relationTo: 'screens';
+        value: number | Screen;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -1641,17 +1862,6 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
-        imageBanner?: T | ImageBannerBlockSelect<T>;
-        grid?: T | GridBlockSelect<T>;
-        imageSlider?: T | ImageSliderBlockSelect<T>;
-        imageScroller?: T | ImageScrollerBlockSelect<T>;
-        spacer?: T | SpacerBlockSelect<T>;
-        video?: T | VideoBlockSelect<T>;
-        quickPick?: T | QuickPickBlockSelect<T>;
-        productScroller?: T | ProductScrollerBlockSelect<T>;
-        reorder?: T | ReorderBlockSelect<T>;
-        widget?: T | WidgetBlockSelect<T>;
-        tabBar?: T | TabBarBlockSelect<T>;
       };
   meta?:
     | T
@@ -1748,394 +1958,6 @@ export interface FormBlockSelect<T extends boolean = true> {
   form?: T;
   enableIntro?: T;
   introContent?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ImageBannerBlock_select".
- */
-export interface ImageBannerBlockSelect<T extends boolean = true> {
-  image?:
-    | T
-    | {
-        imageUrl?: T;
-        width?: T;
-        height?: T;
-        action?:
-          | T
-          | {
-              type?: T;
-              target?: T;
-              title?: T;
-            };
-        visibility?:
-          | T
-          | {
-              audience?: T;
-              tags?: T;
-              matchAllTags?: T;
-              excludeTags?: T;
-              matchAllExcludeTags?: T;
-              quickCommerce?: T;
-              startsAt?: T;
-              endsAt?: T;
-            };
-        analyticsId?: T;
-        id?: T;
-      };
-  visibility?:
-    | T
-    | {
-        audience?: T;
-        tags?: T;
-        matchAllTags?: T;
-        excludeTags?: T;
-        matchAllExcludeTags?: T;
-        quickCommerce?: T;
-        startsAt?: T;
-        endsAt?: T;
-      };
-  backgroundColor?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "GridBlock_select".
- */
-export interface GridBlockSelect<T extends boolean = true> {
-  columns?: T;
-  gap?: T;
-  items?:
-    | T
-    | {
-        imageUrl?: T;
-        width?: T;
-        height?: T;
-        action?:
-          | T
-          | {
-              type?: T;
-              target?: T;
-              title?: T;
-            };
-        visibility?:
-          | T
-          | {
-              audience?: T;
-              tags?: T;
-              matchAllTags?: T;
-              excludeTags?: T;
-              matchAllExcludeTags?: T;
-              quickCommerce?: T;
-              startsAt?: T;
-              endsAt?: T;
-            };
-        analyticsId?: T;
-        id?: T;
-      };
-  visibility?:
-    | T
-    | {
-        audience?: T;
-        tags?: T;
-        matchAllTags?: T;
-        excludeTags?: T;
-        matchAllExcludeTags?: T;
-        quickCommerce?: T;
-        startsAt?: T;
-        endsAt?: T;
-      };
-  backgroundColor?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ImageSliderBlock_select".
- */
-export interface ImageSliderBlockSelect<T extends boolean = true> {
-  showPagination?: T;
-  items?:
-    | T
-    | {
-        imageUrl?: T;
-        width?: T;
-        height?: T;
-        action?:
-          | T
-          | {
-              type?: T;
-              target?: T;
-              title?: T;
-            };
-        visibility?:
-          | T
-          | {
-              audience?: T;
-              tags?: T;
-              matchAllTags?: T;
-              excludeTags?: T;
-              matchAllExcludeTags?: T;
-              quickCommerce?: T;
-              startsAt?: T;
-              endsAt?: T;
-            };
-        analyticsId?: T;
-        id?: T;
-      };
-  visibility?:
-    | T
-    | {
-        audience?: T;
-        tags?: T;
-        matchAllTags?: T;
-        excludeTags?: T;
-        matchAllExcludeTags?: T;
-        quickCommerce?: T;
-        startsAt?: T;
-        endsAt?: T;
-      };
-  backgroundColor?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ImageScrollerBlock_select".
- */
-export interface ImageScrollerBlockSelect<T extends boolean = true> {
-  height?: T;
-  gap?: T;
-  items?:
-    | T
-    | {
-        imageUrl?: T;
-        width?: T;
-        height?: T;
-        action?:
-          | T
-          | {
-              type?: T;
-              target?: T;
-              title?: T;
-            };
-        visibility?:
-          | T
-          | {
-              audience?: T;
-              tags?: T;
-              matchAllTags?: T;
-              excludeTags?: T;
-              matchAllExcludeTags?: T;
-              quickCommerce?: T;
-              startsAt?: T;
-              endsAt?: T;
-            };
-        analyticsId?: T;
-        id?: T;
-      };
-  visibility?:
-    | T
-    | {
-        audience?: T;
-        tags?: T;
-        matchAllTags?: T;
-        excludeTags?: T;
-        matchAllExcludeTags?: T;
-        quickCommerce?: T;
-        startsAt?: T;
-        endsAt?: T;
-      };
-  backgroundColor?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "SpacerBlock_select".
- */
-export interface SpacerBlockSelect<T extends boolean = true> {
-  height?: T;
-  visibility?:
-    | T
-    | {
-        audience?: T;
-        tags?: T;
-        matchAllTags?: T;
-        excludeTags?: T;
-        matchAllExcludeTags?: T;
-        quickCommerce?: T;
-        startsAt?: T;
-        endsAt?: T;
-      };
-  backgroundColor?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "VideoBlock_select".
- */
-export interface VideoBlockSelect<T extends boolean = true> {
-  videoUrl?: T;
-  posterUrl?: T;
-  width?: T;
-  height?: T;
-  action?:
-    | T
-    | {
-        type?: T;
-        target?: T;
-        title?: T;
-      };
-  analyticsId?: T;
-  visibility?:
-    | T
-    | {
-        audience?: T;
-        tags?: T;
-        matchAllTags?: T;
-        excludeTags?: T;
-        matchAllExcludeTags?: T;
-        quickCommerce?: T;
-        startsAt?: T;
-        endsAt?: T;
-      };
-  backgroundColor?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "QuickPickBlock_select".
- */
-export interface QuickPickBlockSelect<T extends boolean = true> {
-  itemWidth?: T;
-  itemHeight?: T;
-  itemGap?: T;
-  items?:
-    | T
-    | {
-        activeImageUrl?: T;
-        inactiveImageUrl?: T;
-        pageId?: T;
-        label?: T;
-        analyticsId?: T;
-        id?: T;
-      };
-  visibility?:
-    | T
-    | {
-        audience?: T;
-        tags?: T;
-        matchAllTags?: T;
-        excludeTags?: T;
-        matchAllExcludeTags?: T;
-        quickCommerce?: T;
-        startsAt?: T;
-        endsAt?: T;
-      };
-  backgroundColor?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ProductScrollerBlock_select".
- */
-export interface ProductScrollerBlockSelect<T extends boolean = true> {
-  collectionId?: T;
-  title?: T;
-  visibility?:
-    | T
-    | {
-        audience?: T;
-        tags?: T;
-        matchAllTags?: T;
-        excludeTags?: T;
-        matchAllExcludeTags?: T;
-        quickCommerce?: T;
-        startsAt?: T;
-        endsAt?: T;
-      };
-  backgroundColor?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ReorderBlock_select".
- */
-export interface ReorderBlockSelect<T extends boolean = true> {
-  headerText?: T;
-  visibility?:
-    | T
-    | {
-        audience?: T;
-        tags?: T;
-        matchAllTags?: T;
-        excludeTags?: T;
-        matchAllExcludeTags?: T;
-        quickCommerce?: T;
-        startsAt?: T;
-        endsAt?: T;
-      };
-  backgroundColor?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "WidgetBlock_select".
- */
-export interface WidgetBlockSelect<T extends boolean = true> {
-  type?: T;
-  config?: T;
-  visibility?:
-    | T
-    | {
-        audience?: T;
-        tags?: T;
-        matchAllTags?: T;
-        excludeTags?: T;
-        matchAllExcludeTags?: T;
-        quickCommerce?: T;
-        startsAt?: T;
-        endsAt?: T;
-      };
-  backgroundColor?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "TabBarBlock_select".
- */
-export interface TabBarBlockSelect<T extends boolean = true> {
-  items?:
-    | T
-    | {
-        label?: T;
-        pageId?: T;
-        iconUrl?: T;
-        isAll?: T;
-        id?: T;
-      };
-  visibility?:
-    | T
-    | {
-        audience?: T;
-        tags?: T;
-        matchAllTags?: T;
-        excludeTags?: T;
-        matchAllExcludeTags?: T;
-        quickCommerce?: T;
-        startsAt?: T;
-        endsAt?: T;
-      };
-  backgroundColor?: T;
   id?: T;
   blockName?: T;
 }
@@ -2310,30 +2132,522 @@ export interface UsersSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "layouts_select".
+ * via the `definition` "app-pages_select".
  */
-export interface LayoutsSelect<T extends boolean = true> {
-  key?: T;
+export interface AppPagesSelect<T extends boolean = true> {
   title?: T;
-  headerBehavior?: T;
-  header?:
+  slug?: T;
+  blocks?:
     | T
     | {
-        toolbar?: T | ToolbarBlockSelect<T>;
-        addressBar?: T | AddressBarBlockSelect<T>;
-        searchBar?: T | SearchBarBlockSelect<T>;
-        imageBanner?: T | ImageBannerBlockSelect<T>;
-        spacer?: T | SpacerBlockSelect<T>;
+        image?: T | AppImageBlockSelect<T>;
+        imageGrid?: T | AppImageGridBlockSelect<T>;
+        carousel?: T | AppCarouselBlockSelect<T>;
+        imageRail?: T | AppImageRailBlockSelect<T>;
+        video?: T | AppVideoBlockSelect<T>;
+        spacer?: T | AppSpacerBlockSelect<T>;
+        text?: T | AppTextBlockSelect<T>;
+        productRail?: T | AppProductRailBlockSelect<T>;
+        reorder?: T | AppReorderBlockSelect<T>;
+        segmentTabs?: T | AppSegmentTabsBlockSelect<T>;
+        categoryTabs?: T | AppCategoryTabsBlockSelect<T>;
+        widget?: T | AppWidgetBlockSelect<T>;
       };
-  page?: T;
   updatedAt?: T;
   createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ToolbarBlock_select".
+ * via the `definition` "AppImageBlock_select".
  */
-export interface ToolbarBlockSelect<T extends boolean = true> {
+export interface AppImageBlockSelect<T extends boolean = true> {
+  imageUrl?: T;
+  width?: T;
+  height?: T;
+  action?:
+    | T
+    | {
+        type?: T;
+        target?: T;
+        title?: T;
+      };
+  sticky?: T;
+  animation?: T;
+  backgroundColor?: T;
+  analyticsId?: T;
+  targeting?:
+    | T
+    | {
+        audience?: T;
+        includeTags?: T;
+        matchAllInclude?: T;
+        excludeTags?: T;
+        matchAllExclude?: T;
+        quickCommerce?: T;
+        startsAt?: T;
+        endsAt?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AppImageGridBlock_select".
+ */
+export interface AppImageGridBlockSelect<T extends boolean = true> {
+  columns?: T;
+  gap?: T;
+  items?:
+    | T
+    | {
+        imageUrl?: T;
+        width?: T;
+        height?: T;
+        action?:
+          | T
+          | {
+              type?: T;
+              target?: T;
+              title?: T;
+            };
+        analyticsId?: T;
+        targeting?:
+          | T
+          | {
+              audience?: T;
+              includeTags?: T;
+              matchAllInclude?: T;
+              excludeTags?: T;
+              matchAllExclude?: T;
+              quickCommerce?: T;
+              startsAt?: T;
+              endsAt?: T;
+            };
+        id?: T;
+      };
+  sticky?: T;
+  animation?: T;
+  backgroundColor?: T;
+  analyticsId?: T;
+  targeting?:
+    | T
+    | {
+        audience?: T;
+        includeTags?: T;
+        matchAllInclude?: T;
+        excludeTags?: T;
+        matchAllExclude?: T;
+        quickCommerce?: T;
+        startsAt?: T;
+        endsAt?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AppCarouselBlock_select".
+ */
+export interface AppCarouselBlockSelect<T extends boolean = true> {
+  autoplay?: T;
+  intervalMs?: T;
+  showDots?: T;
+  items?:
+    | T
+    | {
+        imageUrl?: T;
+        width?: T;
+        height?: T;
+        action?:
+          | T
+          | {
+              type?: T;
+              target?: T;
+              title?: T;
+            };
+        analyticsId?: T;
+        targeting?:
+          | T
+          | {
+              audience?: T;
+              includeTags?: T;
+              matchAllInclude?: T;
+              excludeTags?: T;
+              matchAllExclude?: T;
+              quickCommerce?: T;
+              startsAt?: T;
+              endsAt?: T;
+            };
+        id?: T;
+      };
+  sticky?: T;
+  animation?: T;
+  backgroundColor?: T;
+  analyticsId?: T;
+  targeting?:
+    | T
+    | {
+        audience?: T;
+        includeTags?: T;
+        matchAllInclude?: T;
+        excludeTags?: T;
+        matchAllExclude?: T;
+        quickCommerce?: T;
+        startsAt?: T;
+        endsAt?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AppImageRailBlock_select".
+ */
+export interface AppImageRailBlockSelect<T extends boolean = true> {
+  itemHeight?: T;
+  gap?: T;
+  items?:
+    | T
+    | {
+        imageUrl?: T;
+        width?: T;
+        height?: T;
+        action?:
+          | T
+          | {
+              type?: T;
+              target?: T;
+              title?: T;
+            };
+        analyticsId?: T;
+        targeting?:
+          | T
+          | {
+              audience?: T;
+              includeTags?: T;
+              matchAllInclude?: T;
+              excludeTags?: T;
+              matchAllExclude?: T;
+              quickCommerce?: T;
+              startsAt?: T;
+              endsAt?: T;
+            };
+        id?: T;
+      };
+  sticky?: T;
+  animation?: T;
+  backgroundColor?: T;
+  analyticsId?: T;
+  targeting?:
+    | T
+    | {
+        audience?: T;
+        includeTags?: T;
+        matchAllInclude?: T;
+        excludeTags?: T;
+        matchAllExclude?: T;
+        quickCommerce?: T;
+        startsAt?: T;
+        endsAt?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AppVideoBlock_select".
+ */
+export interface AppVideoBlockSelect<T extends boolean = true> {
+  videoUrl?: T;
+  posterUrl?: T;
+  width?: T;
+  height?: T;
+  action?:
+    | T
+    | {
+        type?: T;
+        target?: T;
+        title?: T;
+      };
+  sticky?: T;
+  animation?: T;
+  backgroundColor?: T;
+  analyticsId?: T;
+  targeting?:
+    | T
+    | {
+        audience?: T;
+        includeTags?: T;
+        matchAllInclude?: T;
+        excludeTags?: T;
+        matchAllExclude?: T;
+        quickCommerce?: T;
+        startsAt?: T;
+        endsAt?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AppSpacerBlock_select".
+ */
+export interface AppSpacerBlockSelect<T extends boolean = true> {
+  height?: T;
+  sticky?: T;
+  animation?: T;
+  backgroundColor?: T;
+  analyticsId?: T;
+  targeting?:
+    | T
+    | {
+        audience?: T;
+        includeTags?: T;
+        matchAllInclude?: T;
+        excludeTags?: T;
+        matchAllExclude?: T;
+        quickCommerce?: T;
+        startsAt?: T;
+        endsAt?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AppTextBlock_select".
+ */
+export interface AppTextBlockSelect<T extends boolean = true> {
+  text?: T;
+  align?: T;
+  fontSize?: T;
+  bold?: T;
+  color?: T;
+  sticky?: T;
+  animation?: T;
+  backgroundColor?: T;
+  analyticsId?: T;
+  targeting?:
+    | T
+    | {
+        audience?: T;
+        includeTags?: T;
+        matchAllInclude?: T;
+        excludeTags?: T;
+        matchAllExclude?: T;
+        quickCommerce?: T;
+        startsAt?: T;
+        endsAt?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AppProductRailBlock_select".
+ */
+export interface AppProductRailBlockSelect<T extends boolean = true> {
+  title?: T;
+  collectionId?: T;
+  sticky?: T;
+  animation?: T;
+  backgroundColor?: T;
+  analyticsId?: T;
+  targeting?:
+    | T
+    | {
+        audience?: T;
+        includeTags?: T;
+        matchAllInclude?: T;
+        excludeTags?: T;
+        matchAllExclude?: T;
+        quickCommerce?: T;
+        startsAt?: T;
+        endsAt?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AppReorderBlock_select".
+ */
+export interface AppReorderBlockSelect<T extends boolean = true> {
+  headerText?: T;
+  sticky?: T;
+  animation?: T;
+  backgroundColor?: T;
+  analyticsId?: T;
+  targeting?:
+    | T
+    | {
+        audience?: T;
+        includeTags?: T;
+        matchAllInclude?: T;
+        excludeTags?: T;
+        matchAllExclude?: T;
+        quickCommerce?: T;
+        startsAt?: T;
+        endsAt?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AppSegmentTabsBlock_select".
+ */
+export interface AppSegmentTabsBlockSelect<T extends boolean = true> {
+  items?:
+    | T
+    | {
+        label?: T;
+        iconUrl?: T;
+        page?: T;
+        targeting?:
+          | T
+          | {
+              audience?: T;
+              includeTags?: T;
+              matchAllInclude?: T;
+              excludeTags?: T;
+              matchAllExclude?: T;
+              quickCommerce?: T;
+              startsAt?: T;
+              endsAt?: T;
+            };
+        id?: T;
+      };
+  colors?:
+    | T
+    | {
+        background?: T;
+        activeFrom?: T;
+        activeTo?: T;
+        activeText?: T;
+        inactiveText?: T;
+        border?: T;
+      };
+  sticky?: T;
+  animation?: T;
+  backgroundColor?: T;
+  analyticsId?: T;
+  targeting?:
+    | T
+    | {
+        audience?: T;
+        includeTags?: T;
+        matchAllInclude?: T;
+        excludeTags?: T;
+        matchAllExclude?: T;
+        quickCommerce?: T;
+        startsAt?: T;
+        endsAt?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AppCategoryTabsBlock_select".
+ */
+export interface AppCategoryTabsBlockSelect<T extends boolean = true> {
+  itemWidth?: T;
+  itemHeight?: T;
+  gap?: T;
+  items?:
+    | T
+    | {
+        label?: T;
+        activeImageUrl?: T;
+        inactiveImageUrl?: T;
+        page?: T;
+        analyticsId?: T;
+        targeting?:
+          | T
+          | {
+              audience?: T;
+              includeTags?: T;
+              matchAllInclude?: T;
+              excludeTags?: T;
+              matchAllExclude?: T;
+              quickCommerce?: T;
+              startsAt?: T;
+              endsAt?: T;
+            };
+        id?: T;
+      };
+  sticky?: T;
+  animation?: T;
+  backgroundColor?: T;
+  analyticsId?: T;
+  targeting?:
+    | T
+    | {
+        audience?: T;
+        includeTags?: T;
+        matchAllInclude?: T;
+        excludeTags?: T;
+        matchAllExclude?: T;
+        quickCommerce?: T;
+        startsAt?: T;
+        endsAt?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AppWidgetBlock_select".
+ */
+export interface AppWidgetBlockSelect<T extends boolean = true> {
+  type?: T;
+  config?: T;
+  sticky?: T;
+  animation?: T;
+  backgroundColor?: T;
+  analyticsId?: T;
+  targeting?:
+    | T
+    | {
+        audience?: T;
+        includeTags?: T;
+        matchAllInclude?: T;
+        excludeTags?: T;
+        matchAllExclude?: T;
+        quickCommerce?: T;
+        startsAt?: T;
+        endsAt?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "screens_select".
+ */
+export interface ScreensSelect<T extends boolean = true> {
+  key?: T;
+  title?: T;
+  header?:
+    | T
+    | {
+        toolbar?: T | AppToolbarBlockSelect<T>;
+        addressBar?: T | AppAddressBarBlockSelect<T>;
+        searchBar?: T | AppSearchBarBlockSelect<T>;
+        image?: T | AppImageBlockSelect<T>;
+        spacer?: T | AppSpacerBlockSelect<T>;
+        text?: T | AppTextBlockSelect<T>;
+      };
+  body?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AppToolbarBlock_select".
+ */
+export interface AppToolbarBlockSelect<T extends boolean = true> {
   logoUrl?: T;
   logoWidth?: T;
   logoHeight?: T;
@@ -2348,81 +2662,80 @@ export interface ToolbarBlockSelect<T extends boolean = true> {
               target?: T;
               title?: T;
             };
-        visibility?:
-          | T
-          | {
-              audience?: T;
-              tags?: T;
-              matchAllTags?: T;
-              excludeTags?: T;
-              matchAllExcludeTags?: T;
-              quickCommerce?: T;
-              startsAt?: T;
-              endsAt?: T;
-            };
         id?: T;
       };
-  visibility?:
+  sticky?: T;
+  animation?: T;
+  backgroundColor?: T;
+  analyticsId?: T;
+  targeting?:
     | T
     | {
         audience?: T;
-        tags?: T;
-        matchAllTags?: T;
+        includeTags?: T;
+        matchAllInclude?: T;
         excludeTags?: T;
-        matchAllExcludeTags?: T;
+        matchAllExclude?: T;
         quickCommerce?: T;
         startsAt?: T;
         endsAt?: T;
       };
-  backgroundColor?: T;
   id?: T;
   blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "AddressBarBlock_select".
+ * via the `definition` "AppAddressBarBlock_select".
  */
-export interface AddressBarBlockSelect<T extends boolean = true> {
+export interface AppAddressBarBlockSelect<T extends boolean = true> {
   placeholder?: T;
   textColor?: T;
-  visibility?:
+  sticky?: T;
+  animation?: T;
+  backgroundColor?: T;
+  analyticsId?: T;
+  targeting?:
     | T
     | {
         audience?: T;
-        tags?: T;
-        matchAllTags?: T;
+        includeTags?: T;
+        matchAllInclude?: T;
         excludeTags?: T;
-        matchAllExcludeTags?: T;
+        matchAllExclude?: T;
         quickCommerce?: T;
         startsAt?: T;
         endsAt?: T;
       };
-  backgroundColor?: T;
   id?: T;
   blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "SearchBarBlock_select".
+ * via the `definition` "AppSearchBarBlock_select".
  */
-export interface SearchBarBlockSelect<T extends boolean = true> {
-  imageUrl?: T;
-  width?: T;
-  height?: T;
-  placeholder?: T;
-  visibility?:
+export interface AppSearchBarBlockSelect<T extends boolean = true> {
+  hints?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  sticky?: T;
+  animation?: T;
+  backgroundColor?: T;
+  analyticsId?: T;
+  targeting?:
     | T
     | {
         audience?: T;
-        tags?: T;
-        matchAllTags?: T;
+        includeTags?: T;
+        matchAllInclude?: T;
         excludeTags?: T;
-        matchAllExcludeTags?: T;
+        matchAllExclude?: T;
         quickCommerce?: T;
         startsAt?: T;
         endsAt?: T;
       };
-  backgroundColor?: T;
   id?: T;
   blockName?: T;
 }
@@ -2761,29 +3074,35 @@ export interface Footer {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "navigation".
+ * via the `definition` "app-navigation".
  */
-export interface Navigation {
+export interface AppNavigation {
   id: number;
   activeColor?: string | null;
   inactiveColor?: string | null;
   backgroundColor?: string | null;
   tabs?:
     | {
-        layoutKey: string;
+        /**
+         * Screen key
+         */
+        screen: string;
         label?: string | null;
         iconUrl?: string | null;
         activeIconUrl?: string | null;
         iconSize?: number | null;
         /**
-         * Who sees this section in the app
+         * Personalisation: leave empty to show to everyone
          */
-        visibility?: {
+        targeting?: {
           audience?: ('all' | 'loggedIn' | 'loggedOut') | null;
-          tags?: string | null;
-          matchAllTags?: boolean | null;
+          /**
+           * Comma separated, e.g. city:Bangalore
+           */
+          includeTags?: string | null;
+          matchAllInclude?: boolean | null;
           excludeTags?: string | null;
-          matchAllExcludeTags?: boolean | null;
+          matchAllExclude?: boolean | null;
           quickCommerce?: ('any' | 'enabled' | 'disabled') | null;
           startsAt?: string | null;
           endsAt?: string | null;
@@ -2842,28 +3161,28 @@ export interface FooterSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "navigation_select".
+ * via the `definition` "app-navigation_select".
  */
-export interface NavigationSelect<T extends boolean = true> {
+export interface AppNavigationSelect<T extends boolean = true> {
   activeColor?: T;
   inactiveColor?: T;
   backgroundColor?: T;
   tabs?:
     | T
     | {
-        layoutKey?: T;
+        screen?: T;
         label?: T;
         iconUrl?: T;
         activeIconUrl?: T;
         iconSize?: T;
-        visibility?:
+        targeting?:
           | T
           | {
               audience?: T;
-              tags?: T;
-              matchAllTags?: T;
+              includeTags?: T;
+              matchAllInclude?: T;
               excludeTags?: T;
-              matchAllExcludeTags?: T;
+              matchAllExclude?: T;
               quickCommerce?: T;
               startsAt?: T;
               endsAt?: T;

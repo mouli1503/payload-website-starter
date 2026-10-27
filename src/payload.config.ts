@@ -4,15 +4,15 @@ import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
 import { fileURLToPath } from 'url'
 
+import { AppNavigation, AppPages, Screens } from './app-cms/collections'
+import { appEndpoints } from './app-cms/endpoints'
 import { Categories } from './collections/Categories'
-import { Layouts } from './collections/Layouts'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
 import { Users } from './collections/Users'
 import { Footer } from './Footer/config'
 import { Header } from './Header/config'
-import { Navigation } from './Navigation/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
@@ -65,7 +65,8 @@ export default buildConfig({
       connectionString: process.env.POSTGRES_URL || '',
     },
   }),
-  collections: [Pages, Posts, Media, Categories, Users, Layouts],
+  collections: [Pages, Posts, Media, Categories, Users, AppPages, Screens],
+  endpoints: appEndpoints,
   cors: [getServerSideURL()].filter(Boolean),
   plugins: [
     ...plugins,
@@ -76,7 +77,7 @@ export default buildConfig({
       token: process.env.BLOB_READ_WRITE_TOKEN || '',
     }),
   ],
-  globals: [Header, Footer, Navigation],
+  globals: [Header, Footer, AppNavigation],
   secret: process.env.PAYLOAD_SECRET,
   sharp,
   typescript: {
