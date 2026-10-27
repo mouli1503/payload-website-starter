@@ -4,7 +4,7 @@
 # Run from the repo root: docker compose -f deploy/vm/docker-compose.yml up -d --build
 services:
   db:
-    image: postgres:17-alpine
+    image: postgres:18-alpine
     restart: always
     network_mode: host
     command: ['postgres', '-c', 'listen_addresses=127.0.0.1', '-c', 'shared_buffers=128MB']
@@ -13,7 +13,7 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD:?set DB_PASSWORD in .env}
       POSTGRES_DB: payload
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql
     healthcheck:
       test: ['CMD', 'pg_isready', '-h', '127.0.0.1', '-U', 'payload']
       interval: 5s
