@@ -30,12 +30,12 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
-RUN \
-  if [ -f yarn.lock ]; then yarn run build; \
-  elif [ -f package-lock.json ]; then npm run build; \
-  elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm run build; \
-  else echo "Lockfile not found." && exit 1; \
-  fi
+# The build reads the database (static params, header/footer globals), so it runs with host
+# networking next to Postgres (see deploy/vm). Migrations go first so the schema matches the code.
+# Calls the binaries directly: `pnpm run` re-verifies deps and fails on ignored build scripts,
+# and the build needs more heap than a 2 GB VM's default (swap covers the rest).
+ENV NODE_OPTIONS="--no-deprecation --max-old-space-size=3072"
+RUN ./node_modules/.bin/payload migrate && ./node_modules/.bin/next build
 
 # Production image, copy all the files and run next
 FROM base AS runner

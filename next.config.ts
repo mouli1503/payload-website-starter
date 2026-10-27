@@ -44,6 +44,8 @@ const nextConfig: NextConfig = {
 
     return webpackConfig
   },
+  // Self-contained server bundle for the Docker image (deploy/vm); Vercel ignores it.
+  output: 'standalone',
   reactStrictMode: true,
   redirects,
   turbopack: {
