@@ -823,7 +823,7 @@ export interface AppImageBlock {
     title?: string | null;
   };
   /**
-   * Pin to top on scroll
+   * Pin to top on scroll. Pinned bars stack: a nested tab bar pins under its parent tab bar.
    */
   sticky?: boolean | null;
   animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
@@ -890,7 +890,7 @@ export interface AppImageGridBlock {
       }[]
     | null;
   /**
-   * Pin to top on scroll
+   * Pin to top on scroll. Pinned bars stack: a nested tab bar pins under its parent tab bar.
    */
   sticky?: boolean | null;
   animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
@@ -958,7 +958,7 @@ export interface AppCarouselBlock {
       }[]
     | null;
   /**
-   * Pin to top on scroll
+   * Pin to top on scroll. Pinned bars stack: a nested tab bar pins under its parent tab bar.
    */
   sticky?: boolean | null;
   animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
@@ -1025,7 +1025,7 @@ export interface AppImageRailBlock {
       }[]
     | null;
   /**
-   * Pin to top on scroll
+   * Pin to top on scroll. Pinned bars stack: a nested tab bar pins under its parent tab bar.
    */
   sticky?: boolean | null;
   animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
@@ -1069,7 +1069,7 @@ export interface AppVideoBlock {
     title?: string | null;
   };
   /**
-   * Pin to top on scroll
+   * Pin to top on scroll. Pinned bars stack: a nested tab bar pins under its parent tab bar.
    */
   sticky?: boolean | null;
   animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
@@ -1102,7 +1102,7 @@ export interface AppVideoBlock {
 export interface AppSpacerBlock {
   height?: number | null;
   /**
-   * Pin to top on scroll
+   * Pin to top on scroll. Pinned bars stack: a nested tab bar pins under its parent tab bar.
    */
   sticky?: boolean | null;
   animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
@@ -1139,7 +1139,7 @@ export interface AppTextBlock {
   bold?: boolean | null;
   color?: string | null;
   /**
-   * Pin to top on scroll
+   * Pin to top on scroll. Pinned bars stack: a nested tab bar pins under its parent tab bar.
    */
   sticky?: boolean | null;
   animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
@@ -1176,7 +1176,7 @@ export interface AppProductRailBlock {
    */
   collectionId?: string | null;
   /**
-   * Pin to top on scroll
+   * Pin to top on scroll. Pinned bars stack: a nested tab bar pins under its parent tab bar.
    */
   sticky?: boolean | null;
   animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
@@ -1209,7 +1209,7 @@ export interface AppProductRailBlock {
 export interface AppReorderBlock {
   headerText?: string | null;
   /**
-   * Pin to top on scroll
+   * Pin to top on scroll. Pinned bars stack: a nested tab bar pins under its parent tab bar.
    */
   sticky?: boolean | null;
   animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
@@ -1276,7 +1276,7 @@ export interface AppSegmentTabsBlock {
     border?: string | null;
   };
   /**
-   * Pin to top on scroll
+   * Pin to top on scroll. Pinned bars stack: a nested tab bar pins under its parent tab bar.
    */
   sticky?: boolean | null;
   animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
@@ -1340,7 +1340,7 @@ export interface AppCategoryTabsBlock {
       }[]
     | null;
   /**
-   * Pin to top on scroll
+   * Pin to top on scroll. Pinned bars stack: a nested tab bar pins under its parent tab bar.
    */
   sticky?: boolean | null;
   animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
@@ -1382,7 +1382,7 @@ export interface AppWidgetBlock {
     | boolean
     | null;
   /**
-   * Pin to top on scroll
+   * Pin to top on scroll. Pinned bars stack: a nested tab bar pins under its parent tab bar.
    */
   sticky?: boolean | null;
   animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
@@ -1445,7 +1445,7 @@ export interface AppToolbarBlock {
       }[]
     | null;
   /**
-   * Pin to top on scroll
+   * Pin to top on scroll. Pinned bars stack: a nested tab bar pins under its parent tab bar.
    */
   sticky?: boolean | null;
   animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
@@ -1479,7 +1479,7 @@ export interface AppAddressBarBlock {
   placeholder?: string | null;
   textColor?: string | null;
   /**
-   * Pin to top on scroll
+   * Pin to top on scroll. Pinned bars stack: a nested tab bar pins under its parent tab bar.
    */
   sticky?: boolean | null;
   animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
@@ -1520,7 +1520,7 @@ export interface AppSearchBarBlock {
       }[]
     | null;
   /**
-   * Pin to top on scroll
+   * Pin to top on scroll. Pinned bars stack: a nested tab bar pins under its parent tab bar.
    */
   sticky?: boolean | null;
   animation?: ('none' | 'fade' | 'slideUp' | 'zoom') | null;
