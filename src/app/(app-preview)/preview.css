@@ -1,0 +1,49 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #fff; color: #0b1215; font: 14px/1.4 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+button { font: inherit; cursor: pointer; }
+::-webkit-scrollbar { display: none; }
+
+.ap-root { min-height: 100vh; padding-bottom: 64px; }
+.ap-controls { display: flex; gap: 6px; padding: 6px 8px; background: #111827; }
+.ap-controls select, .ap-controls button { flex: 1; padding: 4px 6px; border: 0; border-radius: 6px; font-size: 12px; background: #fff; color: #111827; }
+.ap-controls button { flex: none; }
+.ap-json { margin: 0; padding: 12px; font-size: 11px; white-space: pre-wrap; word-break: break-all; }
+
+.ap-block { display: flow-root; }
+.ap-sticky { position: sticky; z-index: 5; background: #fff; box-shadow: 0 6px 8px -8px rgba(0, 0, 0, 0.35); }
+.ap-loading { padding: 32px; text-align: center; color: #848484; }
+.ap-placeholder { margin: 6px 12px; padding: 8px 10px; border: 1px dashed #c4c4c4; border-radius: 8px; color: #6b7280; font: 12px ui-monospace, monospace; }
+.ap-placeholder pre { margin: 6px 0 0; max-height: 240px; overflow: auto; font-size: 11px; }
+
+.ap-text { margin: 0; padding: 8px 16px; }
+.ap-rail { display: flex; overflow-x: auto; }
+.ap-pager { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; }
+.ap-pager > div { flex: 0 0 100%; scroll-snap-align: start; }
+.ap-dots { display: flex; justify-content: center; gap: 4px; padding: 8px 0; }
+.ap-dots span { width: 6px; height: 6px; border-radius: 3px; background: #c4c4c4; }
+.ap-dots span.on { background: #0b2350; }
+
+.ap-toolbar { height: 52px; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; color: #4a4a4a; }
+.ap-toolbar > div { display: flex; gap: 18px; }
+.ap-address { height: 42px; padding: 0 12px; display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; }
+.ap-address span { flex: 1; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.ap-search { margin: 10px 12px; height: 46px; padding: 0 16px; display: flex; align-items: center; gap: 10px; border: 1px solid #e5e5e5; border-radius: 23px; background: #fff; color: #4a4a4a; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06); font-size: 15px; overflow: hidden; }
+.ap-hint { animation: ap-hint 0.3s ease-out; white-space: nowrap; }
+@keyframes ap-hint { from { opacity: 0; transform: translateY(8px); } }
+
+.ap-segments { display: flex; gap: 8px; padding: 8px 12px; overflow-x: auto; }
+.ap-segments button { flex: none; display: flex; align-items: center; gap: 6px; height: 40px; padding: 0 14px; border: 1px solid; border-radius: 20px; font-weight: 600; transition: background 0.2s; }
+.ap-segments img { width: 26px; height: 26px; object-fit: contain; }
+.ap-category { flex: none; padding: 0; border: 0; background: none; }
+.ap-category img { display: block; object-fit: contain; }
+.ap-category span { display: flex; align-items: center; justify-content: center; font-size: 11px; }
+
+.ap-products { gap: 10px; padding: 12px; }
+.ap-card { flex: none; width: 150px; padding: 8px; border: 1px solid #e5e5e5; border-radius: 12px; }
+.ap-card div { height: 134px; border-radius: 8px; background: linear-gradient(90deg, #f3f4f6, #e5e7eb, #f3f4f6); background-size: 200% 100%; animation: ap-shimmer 1.2s infinite linear; }
+.ap-card span { display: block; height: 32px; margin-top: 8px; font-size: 12px; color: #848484; }
+@keyframes ap-shimmer { to { background-position: -200% 0; } }
+
+.ap-nav { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; display: flex; justify-content: space-around; padding: 6px 0 10px; border-top: 1px solid #eee; }
+.ap-nav span { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 11px; font-weight: 600; }
+.ap-nav img { object-fit: contain; }

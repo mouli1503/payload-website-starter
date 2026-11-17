@@ -63,7 +63,7 @@ const envelope = (stickyByDefault = false): Field[] => [
   {
     type: 'row',
     fields: [
-      { name: 'sticky', type: 'checkbox', defaultValue: stickyByDefault, admin: { description: 'Pin to top on scroll' } },
+      { name: 'sticky', type: 'checkbox', defaultValue: stickyByDefault, admin: { description: 'Pin to top on scroll. Pinned bars stack: a nested tab bar pins under its parent tab bar.' } },
       {
         name: 'animation',
         type: 'select',

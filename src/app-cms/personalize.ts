@@ -61,3 +61,13 @@ export const personalize = <T extends Node>(nodes: T[] | null | undefined, ctx: 
   const full = { ...ctx, now: ctx.now ?? Date.now() }
   return resolvers.reduce<T[]>((acc, resolve) => resolve(acc, full), nodes ?? [])
 }
+
+// Payload returns unset groups (action, targeting) as objects of nulls; the app wants null.
+export function compact(value: unknown): unknown {
+  if (Array.isArray(value)) return value.map(compact)
+  if (!value || typeof value !== 'object') return value
+  const entries = Object.entries(value)
+    .filter(([k]) => k !== 'blockName')
+    .map(([k, v]) => [k, compact(v)] as const)
+  return entries.length && entries.every(([, v]) => v === null) ? null : Object.fromEntries(entries)
+}

@@ -1,6 +1,6 @@
 import type { Endpoint, Payload, PayloadRequest } from 'payload'
 
-import { personalize, type AppContext } from './personalize'
+import { compact, personalize, type AppContext } from './personalize'
 
 // BFF for the Supertails app: one call returns a screen already personalised for the caller,
 // plus the pages its default tabs open, so the first paint needs no follow-up request.
@@ -13,16 +13,6 @@ type AppPage = { slug: string; title: string; blocks: Block[] }
 
 // ponytail: tab pages prefetched per screen; raise if deeper default tabs should paint instantly.
 const PREFETCH_DEPTH = 3
-
-// Payload returns unset groups (action, targeting) as objects of nulls; the app wants null.
-function compact(value: unknown): unknown {
-  if (Array.isArray(value)) return value.map(compact)
-  if (!value || typeof value !== 'object') return value
-  const entries = Object.entries(value)
-    .filter(([k]) => k !== 'blockName')
-    .map(([k, v]) => [k, compact(v)] as const)
-  return entries.length && entries.every(([, v]) => v === null) ? null : Object.fromEntries(entries)
-}
 
 async function readContext(req: PayloadRequest): Promise<AppContext> {
   if (req.method !== 'POST') return {}

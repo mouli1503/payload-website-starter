@@ -6,12 +6,26 @@ import { headerBlocks, pageBlocks, targeting } from './blocks'
 
 const access = { create: authenticated, delete: authenticated, read: anyone, update: authenticated }
 
+// Live Preview renders the doc as the app would (src/app-cms/preview), at phone sizes.
+const livePreview = (collection: 'app-pages' | 'screens') => ({
+  url: ({ data }: { data: Record<string, unknown> }) => (data?.id ? `/app-preview/${collection}/${data.id}` : ''),
+  breakpoints: [
+    { label: 'iPhone 16', name: 'iphone', width: 393, height: 852 },
+    { label: 'Small Android', name: 'android', width: 360, height: 760 },
+  ],
+})
+
 // A block list the app renders; tabs blocks link pages together by slug.
 export const AppPages: CollectionConfig = {
   slug: 'app-pages',
   labels: { singular: 'App page', plural: 'App pages' },
   access,
-  admin: { group: 'App', useAsTitle: 'title', defaultColumns: ['title', 'slug', 'updatedAt'] },
+  admin: {
+    group: 'App',
+    useAsTitle: 'title',
+    defaultColumns: ['title', 'slug', 'updatedAt'],
+    livePreview: livePreview('app-pages'),
+  },
   fields: [
     { name: 'title', type: 'text', required: true },
     // Plain text, not the website slug field: app links keep their original (mixed) case.
@@ -24,7 +38,12 @@ export const AppPages: CollectionConfig = {
 export const Screens: CollectionConfig = {
   slug: 'screens',
   access,
-  admin: { group: 'App', useAsTitle: 'key', defaultColumns: ['key', 'title', 'body', 'updatedAt'] },
+  admin: {
+    group: 'App',
+    useAsTitle: 'key',
+    defaultColumns: ['key', 'title', 'body', 'updatedAt'],
+    livePreview: livePreview('screens'),
+  },
   fields: [
     { name: 'key', type: 'text', required: true, unique: true, index: true },
     { name: 'title', type: 'text' },
